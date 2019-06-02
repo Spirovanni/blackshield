@@ -33,10 +33,9 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://blackshield.mysql.database.azure.com:3306/blackshield?useUnicode=true&characterEncoding=utf8&useSSL=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: spirovanni@blackshield
-    password: Ravenna9!
-
+    url: jdbc:mysql://localhost:3306/blackshield?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password:
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -102,10 +101,6 @@ jhipster:
   http:
     cache: # Used by the CachingHttpHeadersFilter
       timeToLiveInDays: 1461
-  cache: # Cache configuration
-    ehcache: # Ehcache configuration
-      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-      max-entries: 1000 # Number of objects in each cache entry
   security:
     authentication:
       jwt:
@@ -114,7 +109,7 @@ jhipster:
         # - In the JHipster Registry (which includes a Spring Cloud Config server)
         # - In a separate `application-prod.yml` file, in the same folder as your executable JAR file
         # - In the `JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET` environment variable
-        base64-secret: OGZhOTEyODA4MjA3OGUwNGUzNWU3Zjc1ODE5YzUwYmQyMzZiNWU0MzcwZDgyNmY0ZjM3OGY3NTc3NGM5ZTU3YzM4YjhlMGJjZWJjYTZjYjg1YjVkMjYyM2ZhZjdiZGZlYzU1MTJmOTI1MmEyZmQyZDMzNjY4MTIzMzkzOTA2ZDM=
+        base64-secret: YjYzMjk2NDIyZWM3ODRlNmU5NDAyYjdhMzU1YzVkNWZjYjcwMDdkZGU2OGM3MDc0YTk2M2U0ODAzNzA4Y2NhMjc3ZTJlZjlkMzBjMjgyYjJiZGZlNTY3MWIzNTQ1YTQ3MWY2YTU3YzI3MTEwZWNhZDBhYzU3MWEwZDRhYmUwMjA=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
