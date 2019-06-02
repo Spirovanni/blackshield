@@ -5,6 +5,15 @@ import { AccountService } from 'app/core';
 import { JhiDateUtils, JhiLanguageService } from 'ng-jhipster';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { MockLanguageService } from '../../../helpers/mock-language.service';
+import { ApplicationInsightsService } from 'app/core/insights/application-insights.service';
+
+class MockApplicationInsightsService {
+  setUserId(userId: string) {}
+
+  clearUserId() {}
+
+  logPageView(name?: string, uri?: string) {}
+}
 
 describe('Service Tests', () => {
   describe('Account Service', () => {
@@ -16,9 +25,14 @@ describe('Service Tests', () => {
         imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot()],
         providers: [
           JhiDateUtils,
+
           {
             provide: JhiLanguageService,
             useClass: MockLanguageService
+          },
+          {
+            provide: ApplicationInsightsService,
+            useClass: MockApplicationInsightsService
           }
         ]
       });
