@@ -79,6 +79,10 @@ server:
 # ===================================================================
 
 jhipster:
+  cache: # Cache configuration
+    ehcache: # Ehcache configuration
+      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
+      max-entries: 100 # Number of objects in each cache entry
   # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
   cors:
     allowed-origins: '*'
@@ -91,7 +95,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NzUwZTQzNDY5ZDBiNzc4MTY5Njc4N2E1ODIxNTg3NTkzNWM4YmIzNTZiYmQxNjU1YzdiNTMyZmY1YWY5ODJhMzFlMDJkYzljZTA2YWRkMWI2NDA2NjAwZmU3YjU1MmU0ZTg4ODhiYWUyMWI0OTMyZTUwYjYxOThkY2ZhZWQwYjI=
+        base64-secret: OGZhOTEyODA4MjA3OGUwNGUzNWU3Zjc1ODE5YzUwYmQyMzZiNWU0MzcwZDgyNmY0ZjM3OGY3NTc3NGM5ZTU3YzM4YjhlMGJjZWJjYTZjYjg1YjVkMjYyM2ZhZjdiZGZlYzU1MTJmOTI1MmEyZmQyZDMzNjY4MTIzMzkzOTA2ZDM=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

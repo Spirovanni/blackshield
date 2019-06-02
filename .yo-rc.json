@@ -1,7 +1,8 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.spirovanni.blackshield"
+      "packageName": "com.spirovanni.blackshield",
+      "nativeLanguage": "en"
     },
     "jhipsterVersion": "6.0.1",
     "applicationType": "monolith",
@@ -10,7 +11,8 @@
     "packageFolder": "com/spirovanni/blackshield",
     "serverPort": "8080",
     "authenticationType": "jwt",
-    "cacheProvider": "no",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
     "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
@@ -20,9 +22,9 @@
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "NzUwZTQzNDY5ZDBiNzc4MTY5Njc4N2E1ODIxNTg3NTkzNWM4YmIzNTZiYmQxNjU1YzdiNTMyZmY1YWY5ODJhMzFlMDJkYzljZTA2YWRkMWI2NDA2NjAwZmU3YjU1MmU0ZTg4ODhiYWUyMWI0OTMyZTUwYjYxOThkY2ZhZWQwYjI=",
+    "jwtSecretKey": "OGZhOTEyODA4MjA3OGUwNGUzNWU3Zjc1ODE5YzUwYmQyMzZiNWU0MzcwZDgyNmY0ZjM3OGY3NTc3NGM5ZTU3YzM4YjhlMGJjZWJjYTZjYjg1YjVkMjYyM2ZhZjdiZGZlYzU1MTJmOTI1MmEyZmQyZDMzNjY4MTIzMzkzOTA2ZDM=",
     "clientFramework": "angularX",
-    "clientTheme": "litera",
+    "clientTheme": "cosmo",
     "clientThemeVariant": "dark",
     "useSass": true,
     "clientPackageManager": "npm",
@@ -31,7 +33,8 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
-    "enableTranslation": false,
-    "enableHibernateCache": false
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "es"]
   }
 }

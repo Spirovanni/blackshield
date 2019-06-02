@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { BlackshieldSharedLibsModule, JhiAlertComponent, JhiAlertErrorComponent } from './';
+import { BlackshieldSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
 
 @NgModule({
   imports: [BlackshieldSharedLibsModule],
-  declarations: [JhiAlertComponent, JhiAlertErrorComponent],
-  exports: [BlackshieldSharedLibsModule, JhiAlertComponent, JhiAlertErrorComponent]
+  declarations: [FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent],
+  exports: [BlackshieldSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent]
 })
 export class BlackshieldSharedCommonModule {}
