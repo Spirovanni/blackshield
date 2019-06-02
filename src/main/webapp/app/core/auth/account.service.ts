@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { Account } from 'app/core/user/account.model';
+import { ApplicationInsightsService } from 'app/core/insights/application-insights.service';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -13,7 +14,12 @@ export class AccountService {
   private authenticated = false;
   private authenticationState = new Subject<any>();
 
-  constructor(private languageService: JhiLanguageService, private sessionStorage: SessionStorageService, private http: HttpClient) {}
+  constructor(
+    private languageService: JhiLanguageService,
+    private sessionStorage: SessionStorageService,
+    private http: HttpClient,
+    private applicationInsightsService: ApplicationInsightsService
+  ) {}
 
   fetch(): Observable<HttpResponse<Account>> {
     return this.http.get<Account>(SERVER_API_URL + 'api/account', { observe: 'response' });
@@ -77,15 +83,11 @@ export class AccountService {
         if (account) {
           this.userIdentity = account;
           this.authenticated = true;
-          // After retrieve the account info, the language will be changed to
-          // the user's preferred language configured in the account setting
-          if (this.userIdentity.langKey) {
-            const langKey = this.sessionStorage.retrieve('locale') || this.userIdentity.langKey;
-            this.languageService.changeLanguage(langKey);
-          }
+          this.applicationInsightsService.setUserId(account.login);
         } else {
           this.userIdentity = null;
           this.authenticated = false;
+          this.applicationInsightsService.clearUserId();
         }
         this.authenticationState.next(this.userIdentity);
         return this.userIdentity;
@@ -93,6 +95,7 @@ export class AccountService {
       .catch(err => {
         this.userIdentity = null;
         this.authenticated = false;
+        this.applicationInsightsService.clearUserId();
         this.authenticationState.next(this.userIdentity);
         return null;
       });
