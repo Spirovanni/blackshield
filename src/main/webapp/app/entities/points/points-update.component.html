@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-points-heading">Create or edit a Points</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!points.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date').invalid && (editForm.get('date').dirty || editForm.get('date').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mind">Mind</label>
+                    <input type="number" class="form-control" name="mind" id="field_mind"
+                           formControlName="mind"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motive">Motive</label>
+                    <input type="number" class="form-control" name="motive" id="field_motive"
+                           formControlName="motive"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_motion">Motion</label>
+                    <input type="number" class="form-control" name="motion" id="field_motion"
+                           formControlName="motion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_profileImage">Profile Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('profileImageContentType').value + ';base64,' + editForm.get('profileImage').value" style="max-height: 100px;" *ngIf="editForm.get('profileImage').value" alt="points image"/>
+                        <div *ngIf="editForm.get('profileImage').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('profileImageContentType').value}}, {{byteSize(editForm.get('profileImage').value)}}</span>
+                            <button type="button" (click)="clearInputImage('profileImage', 'profileImageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_profileImage" (change)="setFileData($event, 'profileImage', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="profileImage" id="field_profileImage"
+                           formControlName="profileImage"/>
+                    <input type="hidden" class="form-control" name="profileImageContentType" id="field_profileImageContentType"
+                           formControlName="profileImageContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_weeklyGoal">Weekly Goal</label>
+                    <input type="number" class="form-control" name="weeklyGoal" id="field_weeklyGoal"
+                           formControlName="weeklyGoal"/>
+                    <div *ngIf="editForm.get('weeklyGoal').invalid && (editForm.get('weeklyGoal').dirty || editForm.get('weeklyGoal').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weeklyGoal').errors.min">
+                            This field should be at least 3.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('weeklyGoal')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user').value?.id ? editForm.get('user').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

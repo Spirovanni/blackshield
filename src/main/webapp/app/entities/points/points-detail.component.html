@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="points">
+            <h2><span>Points</span> {{points.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{points.date}}</span>
+                </dd>
+                <dt><span>Mind</span></dt>
+                <dd>
+                    <span>{{points.mind}}</span>
+                </dd>
+                <dt><span>Motive</span></dt>
+                <dd>
+                    <span>{{points.motive}}</span>
+                </dd>
+                <dt><span>Motion</span></dt>
+                <dd>
+                    <span>{{points.motion}}</span>
+                </dd>
+                <dt><span>Profile Image</span></dt>
+                <dd>
+                    <div *ngIf="points.profileImage">
+                        <a (click)="openFile(points.profileImageContentType, points.profileImage)">
+                            <img [src]="'data:' + points.profileImageContentType + ';base64,' + points.profileImage" style="max-width: 100%;" alt="points image"/>
+                        </a>
+                        {{points.profileImageContentType}}, {{byteSize(points.profileImage)}}
+                    </div>
+                </dd>
+                <dt><span>Weekly Goal</span></dt>
+                <dd>
+                    <span>{{points.weeklyGoal}}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{points.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/points', points.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
