@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.spirovanni.blackshield"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "monolith",
+    "baseName": "blackshield",
+    "packageName": "com.spirovanni.blackshield",
+    "packageFolder": "com/spirovanni/blackshield",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzUwZTQzNDY5ZDBiNzc4MTY5Njc4N2E1ODIxNTg3NTkzNWM4YmIzNTZiYmQxNjU1YzdiNTMyZmY1YWY5ODJhMzFlMDJkYzljZTA2YWRkMWI2NDA2NjAwZmU3YjU1MmU0ZTg4ODhiYWUyMWI0OTMyZTUwYjYxOThkY2ZhZWQwYjI=",
+    "clientFramework": "angularX",
+    "clientTheme": "litera",
+    "clientThemeVariant": "dark",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": ["gatling", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "enableHibernateCache": false
+  }
+}
