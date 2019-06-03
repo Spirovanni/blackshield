@@ -5,13 +5,43 @@ $fa-font-path: '~font-awesome/fonts';
 put Sass variables here:
 eg $input-color: red;
 ****************************/
-// Override Boostrap variables
-//@import '~bootswatch/dist/cyborg/variables';
+// Override Bootstrap variables
+
+// themes - our custom or/and out of the box themes
+@import 'theme/themes';
+
 @import 'bootstrap-variables';
 // Import Bootstrap source files from node_modules
-//@import '~bootstrap/scss/bootstrap';
-//@import '~bootswatch/dist/cyborg/bootswatch';
+
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/scss/font-awesome';
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
+
+// Theme styles
+@import '~ionicons-inline/dist/ionicons';
+@import '~typeface-exo/index.css';
+
+// framework component themes (styles tied to theme variables)
+//@import '~@nebular/theme/styles/globals';
+//@import '~@nebular/auth/styles/all';
+//@import '~@nebular/bootstrap/styles/globals';
+// ...
+
+// global app font size
+@import './theme/font-size';
+
+// loading progress bar theme
+@import './theme/pace.theme';
+
+// install the framework and custom global styles
+//@include nb-install() {
+//
+//  // framework global styles
+//  @include nb-theme-global();
+//  @include nb-auth-global();
+//  @include nb-bootstrap-global();
+//
+//  // loading progress bar
+//  @include ngx-pace-theme();
+//};
