@@ -10,7 +10,7 @@
     "indent": [true, "spaces"],
     "label-position": true,
     "member-access": false,
-    "member-ordering": [true, "static-before-instance", "variables-before-functions"],
+    //    "member-ordering": [true, "static-before-instance", "variables-before-functions"],
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
