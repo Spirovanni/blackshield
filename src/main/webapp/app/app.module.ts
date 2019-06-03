@@ -23,6 +23,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
 
 import { ThemeModule } from './shared';
 import { CoreModule } from './shared';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { CoreModule } from './shared';
       defaultI18nLang: 'en'
     }),
     BlackshieldSharedModule.forRoot(),
+    NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
     BlackshieldCoreModule,
