@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'jhi-footer',
+  selector: 'jhi-ngx-footer',
   styleUrls: ['./footer.component.scss'],
   template: `
     <span class="created-by"
