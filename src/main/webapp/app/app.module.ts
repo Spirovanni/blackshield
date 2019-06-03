@@ -22,6 +22,7 @@ import * as moment from 'moment';
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
 import { ThemeModule } from './shared';
+import { CoreModule } from './shared';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ThemeModule } from './shared';
     }),
     BlackshieldSharedModule.forRoot(),
     ThemeModule.forRoot(),
+    CoreModule.forRoot(),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
     BlackshieldAccountModule,
