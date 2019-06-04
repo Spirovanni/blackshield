@@ -21,6 +21,10 @@ import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
+import { ThemeModule } from './shared';
+import { CoreModule } from './shared';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -33,6 +37,9 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
       defaultI18nLang: 'en'
     }),
     BlackshieldSharedModule.forRoot(),
+    NgbModule.forRoot(),
+    ThemeModule.forRoot(),
+    CoreModule.forRoot(),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
     BlackshieldAccountModule,
