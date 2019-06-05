@@ -8,9 +8,9 @@
  * This is a starting point where we declare the maps of themes and globally available functions/mixins
  */
 
-@import 'core/mixins';
-@import 'core/functions';
-@import 'core/breakpoints';
+@import 'theme/styles/core/mixins';
+@import 'theme/styles/core/functions';
+@import 'theme/styles/core/breaking-notice';
 
 $nb-enabled-themes: () !global;
 $nb-enable-css-variables: false !global;

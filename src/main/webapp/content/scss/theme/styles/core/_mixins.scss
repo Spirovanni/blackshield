@@ -37,8 +37,8 @@
     $color-3 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='$color-1',
-                                                     endColorstr='$color-3',
-                                                     GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    endColorstr='$color-3',
+    GradientType=1); /* IE6-9 fallback on horizontal gradient */
 }
 
 @mixin nb-right-gradient($left-color, $right-color) {

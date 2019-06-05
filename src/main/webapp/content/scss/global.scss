@@ -4,6 +4,17 @@
 
 @import './theme/global/components/tree.theme';
 
+@mixin nb-theme-global() {
+  @include nb-theme-components();
+  @include nb-theme-overrides();
+}
+
+@mixin nb-install() {
+  @include nb-install-global() {
+    @content;
+  }
+}
+
 //@import 'bootstrap-variables';
 //@import '~bootstrap/scss/functions';
 //@import '~bootswatch/dist/cyborg/variables';

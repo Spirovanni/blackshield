@@ -8,7 +8,9 @@ eg $input-color: red;
 // Override Bootstrap variables
 
 // themes - our custom or/and out of the box themes
+@import 'theming';
 @import 'theme/themes';
+@import 'global';
 
 @import 'bootstrap-variables';
 // Import Bootstrap source files from node_modules
@@ -22,26 +24,19 @@ eg $input-color: red;
 @import '~ionicons-inline/dist/ionicons';
 @import '~typeface-exo/index.css';
 
-// framework component themes (styles tied to theme variables)
-//@import '~@nebular/theme/styles/globals';
-//@import '~@nebular/auth/styles/all';
-//@import '~@nebular/bootstrap/styles/globals';
-// ...
-
 // global app font size
 @import './theme/font-size';
 
 // loading progress bar theme
 @import './theme/pace.theme';
 
-// install the framework and custom global styles
-//@include nb-install() {
-//
-//  // framework global styles
-//  @include nb-theme-global();
-//  @include nb-auth-global();
-//  @include nb-bootstrap-global();
-//
-//  // loading progress bar
-//  @include ngx-pace-theme();
-//};
+//install the framework and custom global styles
+@include nb-install() {
+  // framework global styles
+  @include nb-theme-global();
+  //@include nb-auth-global();
+  //@include nb-bootstrap-global();
+
+  // loading progress bar
+  @include ngx-pace-theme();
+}
