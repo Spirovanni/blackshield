@@ -1,13 +1,12 @@
 module.exports = {
     preset: 'jest-preset-angular',
-    setupFilesAfterEnv: ['<rootDir>/src/test/javascript/jest.ts'],
+    setupTestFrameworkScriptFile: '<rootDir>/src/test/javascript/jest.ts',
     coverageDirectory: '<rootDir>/target/test-results/',
     globals: {
         'ts-jest': {
-            stringifyContentPathRegex: '\\.html$',
-            tsConfig: 'tsconfig.json',
-            astTransformers: [require.resolve('jest-preset-angular/InlineHtmlStripStylesTransformer')]
-        }
+            tsConfigFile: 'tsconfig.json'
+        },
+        __TRANSFORM_HTML__: true
     },
     coveragePathIgnorePatterns: [
         '<rootDir>/src/test/javascript'
@@ -21,7 +20,7 @@ module.exports = {
     ],
     testResultsProcessor: 'jest-sonar-reporter',
     transformIgnorePatterns: ['node_modules/(?!@angular/common/locales)'],
-    testMatch: ['<rootDir>/src/test/javascript/spec/**/@(*.)@(spec.ts)'],
+    testMatch: ['<rootDir>/src/test/javascript/spec/**/+(*.)+(spec.ts)'],
     rootDir: '../../../',
     testURL: "http://localhost/"
 };

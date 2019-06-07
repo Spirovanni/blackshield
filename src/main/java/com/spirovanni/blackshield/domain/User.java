@@ -5,23 +5,25 @@ import com.spirovanni.blackshield.config.Constants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
+import javax.validation.constraints.Email;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
+import java.time.Instant;
 
 /**
  * A user.
  */
 @Entity
 @Table(name = "jhi_user")
+
 public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -200,15 +202,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof User)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((User) o).id);
+
+        User user = (User) o;
+        return !(user.getId() == null || getId() == null) && Objects.equals(getId(), user.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override

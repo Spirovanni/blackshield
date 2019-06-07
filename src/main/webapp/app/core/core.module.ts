@@ -4,27 +4,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import locale from '@angular/common/locales/en';
 
-import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDateMomentAdapter } from 'app/shared/util/datepicker-adapter';
-import { ApplicationInsightsService } from 'app/core/insights/application-insights.service';
-
 @NgModule({
-  imports: [HttpClientModule],
-  exports: [],
-  declarations: [],
-  providers: [
-    Title,
-    {
-      provide: LOCALE_ID,
-      useValue: 'en'
-    },
-    { provide: NgbDateAdapter, useClass: NgbDateMomentAdapter },
-    DatePipe,
-    ApplicationInsightsService
-  ]
+    imports: [HttpClientModule],
+    exports: [],
+    declarations: [],
+    providers: [
+        Title,
+        {
+            provide: LOCALE_ID,
+            useValue: 'en'
+        },
+        DatePipe
+    ]
 })
 export class BlackshieldCoreModule {
-  constructor() {
-    registerLocaleData(locale);
-  }
+    constructor() {
+        registerLocaleData(locale);
+    }
 }
