@@ -25,6 +25,9 @@ import * as moment from 'moment';
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { DragulaModule } from 'ng2-dragula';
+import { CoreModule } from './shared';
 
 @NgModule({
   imports: [
@@ -41,6 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     BlackshieldSharedModule.forRoot(),
     NgbModule.forRoot(),
+    CoreModule.forRoot(),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
     BlackshieldAccountModule,

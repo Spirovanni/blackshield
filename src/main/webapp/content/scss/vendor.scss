@@ -26,6 +26,9 @@ eg $input-color: red;
 @import '~@nebular/auth/styles/all';
 @import '~@nebular/bootstrap/styles/globals';
 
+// global app font size
+@import './font-size';
+
 // loading progress bar theme
 @import './pace.theme';
 
