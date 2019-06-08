@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
+import { ThemeModule } from './shared';
 
 @NgModule({
   imports: [
@@ -45,6 +46,9 @@ import { CoreModule } from './shared';
     BlackshieldSharedModule.forRoot(),
     NgbModule.forRoot(),
     CoreModule.forRoot(),
+    ThemeModule.forRoot(),
+    DragulaModule.forRoot(),
+    StoreModule.forRoot({}),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
     BlackshieldAccountModule,

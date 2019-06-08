@@ -61,8 +61,8 @@
       }
     ],
 
-    "directive-selector": [true, "attribute", "jhi", "camelCase"],
-    "component-selector": [true, "element", "jhi", "kebab-case"],
+    "directive-selector": [true, "attribute", "jhi", "camelCase", "ngx"],
+    "component-selector": [true, "element", "jhi", "kebab-case", "ngx"],
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,
     "no-host-metadata-property": true,
