@@ -59,7 +59,7 @@
     "ionicons-inline": "^1.0.0",
     "jasmine-fail-fast": "2.0.0",
     "jquery": "^3.4.1",
-    "leaflet": "1.0.3",
+    "leaflet": "1.2.0",
     "marked": "0.3.9",
     "moment": "2.24.0",
     "nebular-icons": "1.1.0",
