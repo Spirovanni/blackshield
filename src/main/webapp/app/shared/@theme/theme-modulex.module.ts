@@ -54,9 +54,9 @@ import {
 } from './components';
 import { CapitalizePipe, PluralPipe, RoundPipe, TimingPipe, NumberWithCommasPipe, EvaIconsPipe } from './pipes';
 import { OneColumnLayoutComponent, SampleLayoutComponent, ThreeColumnsLayoutComponent, TwoColumnsLayoutComponent } from './layouts';
-import { DEFAULT_THEME } from './styles/theme.default';
-import { COSMIC_THEME } from './styles/theme.cosmic';
-import { CORPORATE_THEME } from './styles/theme.corporate';
+import { DEFAULT_THEME } from './../../../content/scss';
+import { COSMIC_THEME } from './../../../content/scss';
+import { CORPORATE_THEME } from './../../../content/scss';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -141,10 +141,10 @@ const NB_THEME_PROVIDERS = [
   declarations: [...COMPONENTS, ...PIPES],
   entryComponents: [...ENTRY_COMPONENTS]
 })
-export class ThemeModule {
+export class ThemeModulex {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
-      ngModule: ThemeModule,
+      ngModule: ThemeModulex,
       providers: [...NB_THEME_PROVIDERS]
     };
   }

@@ -17,7 +17,7 @@ import { NotificationInterceptor } from './blocks/interceptor/notification.inter
 import { BlackshieldSharedModule } from 'app/shared';
 import { BlackshieldCoreModule } from 'app/core';
 import { BlackshieldAppRoutingModule } from './app-routing.module';
-import { BlackshieldHomeModule } from './home/home.module';
+import { BlackshieldHomeModule } from './home';
 import { BlackshieldAccountModule } from './account/account.module';
 import { BlackshieldEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
@@ -28,7 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
-import { ThemeModule } from './shared';
+import { ThemeModulex } from './shared';
 
 @NgModule({
   imports: [
@@ -46,7 +46,7 @@ import { ThemeModule } from './shared';
     BlackshieldSharedModule.forRoot(),
     NgbModule.forRoot(),
     CoreModule.forRoot(),
-    ThemeModule.forRoot(),
+    ThemeModulex.forRoot(),
     DragulaModule.forRoot(),
     StoreModule.forRoot({}),
     BlackshieldCoreModule,
