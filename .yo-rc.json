@@ -27,14 +27,20 @@
     "clientThemeVariant": "dark",
     "useSass": true,
     "clientPackageManager": "npm",
-    "testFrameworks": ["gatling", "protractor"],
+    "testFrameworks": [
+      "gatling",
+      "protractor"
+    ],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "en",
-    "languages": ["en", "es"],
+    "languages": [
+      "en",
+      "es"
+    ],
     "enableHibernateCache": false
   }
 }
