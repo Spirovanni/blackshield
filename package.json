@@ -156,7 +156,7 @@
     "mocha": "6.1.4",
     "moment-locales-webpack-plugin": "1.0.7",
     "npm-run-all": "4.0.2",
-    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "3.0.0",
     "prettier": "1.16.4",
     "protractor": "5.4.2",
