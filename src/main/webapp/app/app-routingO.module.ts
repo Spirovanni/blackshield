@@ -1,5 +1,10 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { errorRoute, navbarRoute } from './layouts';
+import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+
+const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
+
 import {
   NbAuthComponent,
   NbLoginComponent,
