@@ -54,9 +54,9 @@ import {
 } from './components';
 import { CapitalizePipe, PluralPipe, RoundPipe, TimingPipe, NumberWithCommasPipe, EvaIconsPipe } from './pipes';
 import { OneColumnLayoutComponent, SampleLayoutComponent, ThreeColumnsLayoutComponent, TwoColumnsLayoutComponent } from './layouts';
-import { DEFAULT_THEME } from './../../../content/scss';
-import { COSMIC_THEME } from './../../../content/scss';
-import { CORPORATE_THEME } from './../../../content/scss';
+import { DEFAULT_THEME } from './styles/theme.default';
+import { COSMIC_THEME } from './styles/theme.cosmic';
+import { CORPORATE_THEME } from './styles/theme.corporate';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
