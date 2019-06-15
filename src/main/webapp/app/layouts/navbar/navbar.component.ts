@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
@@ -8,12 +8,23 @@ import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
+import { NbMenuService, NbSidebarService } from '@nebular/theme';
+import { UserData } from '../../shared/@core/data/users';
+import { AnalyticsService } from '../../shared/@core/utils';
+import { LayoutService } from '../../shared/@core/utils';
+
 @Component({
   selector: 'jhi-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['navbar.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() position = 'normal';
+
+  user: any;
+
+  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+
   inProduction: boolean;
   isNavbarCollapsed: boolean;
   languages: any[];
@@ -29,7 +40,12 @@ export class NavbarComponent implements OnInit {
     private accountService: AccountService,
     private loginModalService: LoginModalService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private sidebarService: NbSidebarService,
+    private menuService: NbMenuService,
+    private userService: UserData,
+    private analyticsService: AnalyticsService,
+    private layoutService: LayoutService
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
@@ -44,6 +60,8 @@ export class NavbarComponent implements OnInit {
       this.inProduction = profileInfo.inProduction;
       this.swaggerEnabled = profileInfo.swaggerEnabled;
     });
+
+    this.userService.getUsers().subscribe((users: any) => (this.user = users.nick));
   }
 
   changeLanguage(languageKey: string) {
@@ -75,5 +93,20 @@ export class NavbarComponent implements OnInit {
 
   getImageUrl() {
     return this.isAuthenticated() ? this.accountService.getImageUrl() : null;
+  }
+
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(true, 'menu-sidebar');
+    this.layoutService.changeLayoutSize();
+
+    return false;
+  }
+
+  goToHome() {
+    this.menuService.navigateHome();
+  }
+
+  startSearch() {
+    this.analyticsService.trackEvent('startSearch');
   }
 }
