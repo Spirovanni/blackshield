@@ -9,7 +9,7 @@ eg $input-color: red;
 @import '~bootswatch/dist/cyborg/variables';
 // Import Bootstrap source files from node_modules
 @import '~bootstrap/scss/bootstrap';
-@import '~bootswatch/dist/cyborg/bootswatch';
+//@import '~bootswatch/dist/cyborg/bootswatch';
 @import '~font-awesome/scss/font-awesome';
 
 @import '~leaflet/dist/leaflet.css';
@@ -43,7 +43,10 @@ eg $input-color: red;
 @import '~@nebular/theme/styles/prebuilt/corporate';
 @import '~roboto-fontface/css/roboto/roboto-fontface.css';
 $nebular-icons-font-path: '~nebular-icons/fonts';
+@import '~typeface-exo/index.css';
+@import '~roboto-fontface/css/roboto/roboto-fontface.css';
 @import '~nebular-icons/scss/nebular-icons';
+@import '~font-awesome/scss/font-awesome.scss';
 @import '~socicon/css/socicon.css';
 
 @import '~ngx-ui-switch/ui-switch.component.scss';

@@ -1,11 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, NavigationEnd, NavigationError } from '@angular/router';
 
 import { JhiLanguageHelper } from 'app/core';
 
+import { NbMediaBreakpoint, NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+
+import { StateService } from '../../shared';
+
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/withLatestFrom';
+import 'rxjs/add/operator/delay';
+
 @Component({
   selector: 'jhi-main',
-  templateUrl: './main.component.html'
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
 export class JhiMainComponent implements OnInit {
   constructor(private jhiLanguageHelper: JhiLanguageHelper, private router: Router) {}

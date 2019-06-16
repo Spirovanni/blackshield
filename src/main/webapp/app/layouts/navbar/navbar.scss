@@ -2,11 +2,11 @@
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '~bootstrap/scss/functions';
-@import '~bootswatch/dist/cyborg/variables';
+//@import '~bootswatch/dist/cyborg/variables';
 @import '~bootstrap/scss/variables';
 
 /* ==========================================================================
-Nebular Navbar Styling
+Navbar
 ========================================================================== */
 
 @include nb-install-component() {
@@ -28,7 +28,6 @@ Nebular Navbar Styling
   .logo-container {
     display: flex;
     align-items: center;
-    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
   }
 
   .control-item {
@@ -38,11 +37,10 @@ Nebular Navbar Styling
   .header-container {
     display: flex;
     align-items: center;
-    width: auto;
+    width: 100%;
 
     .navigation {
-      @include nb-ltr(padding-right, nb-theme(padding));
-      @include nb-rtl(padding-left, nb-theme(padding));
+      padding-right: nb-theme(padding);
       font-size: 2.5rem;
       text-decoration: none;
 
@@ -55,8 +53,6 @@ Nebular Navbar Styling
       padding: 0 nb-theme(padding);
       font-size: 1.75rem;
       font-weight: nb-theme(font-weight-bolder);
-      @include nb-ltr(border-left, 1px solid nb-theme(separator));
-      @include nb-rtl(border-right, 1px solid nb-theme(separator));
       white-space: nowrap;
 
       span {
@@ -65,102 +61,20 @@ Nebular Navbar Styling
     }
   }
 
-  @include nb-for-theme(corporate) {
-    $menu-action-separator-color: #3f4550;
-
-    nb-action {
-      @include nb-ltr(border-left-color, $menu-action-separator-color);
-      @include nb-rtl(border-right-color, $menu-action-separator-color);
-    }
-
-    .header-container .logo {
-      @include nb-ltr(border, none);
-      @include nb-rtl(border, none);
-    }
-
-    .header-container ngx-theme-switcher .dropdown-toggle {
-      color: nb-theme(color-white);
-      background: transparent;
-    }
-  }
-
-  ngx-layout-direction-switcher {
-    margin: 0 1.5rem;
-  }
-
-  ngx-theme-switcher {
-    margin: nb-theme(layout-padding);
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  @include media-breakpoint-down(xl) {
-    ngx-layout-direction-switcher {
-      display: none;
-    }
-  }
-
-  .toggle-settings a {
-    display: block;
+  .toggle-layout a {
+    display: inline;
     text-decoration: none;
+    border-left: 1px solid nb-theme(separator);
     line-height: 1;
 
     i {
       color: nb-theme(color-fg-highlight);
       font-size: 2.25rem;
-      border-radius: 50%;
-      position: relative;
-      animation-name: pulse-light;
-
-      &::after {
-        content: ' ';
-        // hack to be able to set border-radius
-        background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-        border-radius: 50%;
-        pointer-events: none;
-
-        position: absolute;
-        top: 52.3%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 13%;
-        height: 13%;
-
-        animation: 3s linear infinite pulse;
-
-        @include nb-for-theme(default) {
-          animation-name: pulse-light;
-        }
-      }
-    }
-  }
-
-  @include keyframes(pulse) {
-    0% {
-      box-shadow: 0 0 1px 0 rgba(nb-theme(color-fg-highlight), 0);
-    }
-    20% {
-      box-shadow: 0 0 3px 10px rgba(nb-theme(color-fg-highlight), 0.4);
-    }
-    100% {
-      box-shadow: 0 0 5px 20px rgba(nb-theme(color-fg-highlight), 0);
-    }
-  }
-
-  @include keyframes(pulse-light) {
-    0% {
-      box-shadow: 0 0 1px 0 rgba(115, 255, 208, 0);
-    }
-    20% {
-      box-shadow: 0 0 3px 10px rgba(115, 255, 208, 0.4);
-    }
-    100% {
-      box-shadow: 0 0 5px 20px rgba(115, 255, 208, 0);
     }
   }
 
   @include media-breakpoint-down(md) {
-    nb-action:not(.toggle-settings) {
+    nb-action:not(.toggle-layout) {
       border: none;
     }
 
@@ -168,16 +82,8 @@ Nebular Navbar Styling
       display: none;
     }
 
-    .toggle-settings {
+    .toggle-layout {
       padding: 0;
-    }
-
-    ngx-layout-direction-switcher {
-      display: none;
-    }
-
-    ngx-theme-switcher {
-      margin: 0 0.5rem;
     }
   }
 
@@ -194,15 +100,11 @@ Nebular Navbar Styling
       }
     }
 
-    .toggle-settings {
+    .toggle-layout {
       display: none;
     }
 
-    ngx-theme-switcher {
-      display: none;
-    }
-
-    nb-action:not(.toggle-settings) {
+    nb-action:not(.toggle-layout) {
       padding: 0;
     }
   }
@@ -215,52 +117,244 @@ Nebular Navbar Styling
 }
 
 /* ==========================================================================
-JHipster Navbar Styling
+JHipster Default Style
 ========================================================================== */
 
 .navbar-version {
-  font-size: 0.65em;
-  color: $navbar-dark-color;
+  font-size: 10px;
+  color: #ccc;
 }
 
-.profile-image {
-  height: 1.75em;
-  width: 1.75em;
-}
-
-.navbar {
-  padding: 0.2rem 1rem;
+.jh-navbar {
+  padding: 0.01em 1em;
+  .profile-image {
+    margin: -10px 0px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
   .dropdown-item.active,
   .dropdown-item.active:focus,
   .dropdown-item.active:hover {
-    background-color: $dark;
+    background-color: nb-theme(menu-active-bg);
+    color: #7bff24;
+    min-width: 140px;
+    font-weight: nb-theme(menu-active-font-weight);
   }
 
-  ul.navbar-nav {
-    .nav-item {
-      margin-left: 0.5em;
+  .dropdown-item {
+    font-family: nb-theme(menu-font-family);
+    font-size: nb-theme(menu-font-size);
+    font-weight: nb-theme(menu-font-weight);
+    background: nb-theme(menu-bg);
+    color: nb-theme(menu-fg);
+    min-width: 140px;
+    padding: nb-theme(menu-item-padding);
+
+    a {
+      padding: nb-theme(menu-item-padding);
+      border-radius: nb-theme(menu-submenu-item-border-radius);
     }
   }
 
+  .dropdown-menu {
+    margin: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: nb-theme(btn-border-radius);
+    border-bottom-right-radius: nb-theme(btn-border-radius);
+    border: none;
+    width: 100%;
+    color: nb-theme(btn-fg);
+    padding: 0.75rem 0;
+    min-width: 140px;
+  }
+
+  .dropdown-item {
+    color: inherit;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    cursor: default;
+    margin-top: -2px;
+    &:hover {
+      background-color: nb-theme(btn-secondary-border);
+    }
+  }
+
+  .control-item {
+    font-size: nb-theme(menu-icon-font-size);
+    width: nb-theme(menu-icon-font-size);
+    margin: nb-theme(menu-icon-margin);
+    text-align: center;
+    color: nb-theme(menu-icon-color);
+  }
+
+  .dropdown-toggle::after {
+    margin-left: 0.15em;
+  }
+  ul.navbar-nav {
+    padding: 0.2em;
+    .nav-item {
+      font-size: nb-theme(user-font-size);
+      line-height: nb-theme(user-line-height);
+      padding: nb-theme(menu-item-padding);
+      margin-top: 10px;
+      border-radius: nb-theme(menu-submenu-item-border-radius);
+
+      &.background {
+        color: nb-theme(user-fg);
+      }
+    }
+  }
   a.nav-link {
     font-weight: 400;
   }
+}
 
-  .navbar-toggler {
-    &:hover {
-      color: $navbar-dark-hover-color;
-    }
+@media screen and (min-width: 768px) {
+  .jh-navbar-toggler {
+    display: none;
   }
+}
+
+@media screen and (max-width: 992px) {
+  .jh-logo-container {
+    width: 100%;
+  }
+}
+
+.navbar-title {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* ==========================================================================
 Logo styles
 ========================================================================== */
-.logo-img {
-  height: 95px;
-  width: 235px;
-  display: inline-block;
-  vertical-align: middle;
-  background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
-  background-size: contain;
+.navbar-brand {
+  &.logo {
+    padding: 350px 25px;
+    .logo-img {
+      height: 45px;
+      width: 70px;
+      display: inline-block;
+      vertical-align: middle;
+      background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
+      background-size: contain;
+      font-size: 1.75rem;
+      font-weight: nb-theme(font-weight-bolder);
+      white-space: nowrap;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
+}
+
+/* Navbar */
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9375rem;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #fff;
+}
+
+.navbar-brand {
+  text-shadow: 2px 2px 3px;
+  font-size: 1.625rem;
+  color: #fff;
+}
+
+.brand-logo {
+  width: 1.625rem;
+  margin-top: -5px;
+  z-index: 1;
+}
+
+.fa-linkedin-square:hover {
+  color: #337ab7;
+}
+
+.fa-facebook-square:hover {
+  color: #3b5998;
+}
+
+.fa-twitter-square:hover {
+  color: #0084b4;
+}
+
+.navbar .active {
+  border-bottom: 2px solid #d73a8a !important;
+}
+
+.navbar {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.navbar-dark {
+  background-color: transparent;
+}
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  color: #fff;
+}
+.navbar-dark .navbar-toggler {
+  border-color: #fff;
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-light {
+  background-color: #fff;
+  box-shadow: 2px 2px 15px 2px;
+}
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
+  color: #000;
+}
+.navbar-light .navbar-toggler {
+  border-color: #7f7f7f;
+}
+
+@media (max-width: 768px) {
+  html {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  .navbar-brand {
+    padding-left: 15px !important;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (width: 768px) {
+  .pt-max {
+    padding-top: 50% !important;
+  }
+}
+
+@media (width: 1024px) {
+  .pt-max {
+    padding-top: 50% !important;
+  }
+}
+
+@media (max-width: 766px) {
+  .navbar-collapse {
+    color: #000;
+    background-color: #fff;
+    padding: 15px;
+  }
+  .navbar-collapse a {
+    color: #000 !important;
+  }
 }
