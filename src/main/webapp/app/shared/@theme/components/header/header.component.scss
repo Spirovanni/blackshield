@@ -19,6 +19,7 @@
   }
 
   .logo-container {
+    height: 300px;
     display: flex;
     align-items: center;
     width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
@@ -205,4 +206,29 @@
       display: none;
     }
   }
+}
+
+.navbar-brand {
+  &.logo {
+    padding: 50px 25px;
+    .logo-img {
+      height: 85px;
+      width: 190px;
+      display: inline-block;
+      vertical-align: middle;
+      background: url('../../../../../content/images/logo-black-shield-white.png') no-repeat center center;
+      background-size: contain;
+      font-size: 1.75rem;
+      font-weight: nb-theme(font-weight-bolder);
+      white-space: nowrap;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
+}
+.navbar-version {
+  font-size: 10px;
+  color: #ccc;
 }

@@ -3,9 +3,10 @@ import { RouterModule } from '@angular/router';
 
 import { BlackshieldSharedModule } from 'app/shared';
 import { HOME_ROUTE, HomeComponent } from './';
+import { ThemeModulex } from '../shared';
 
 @NgModule({
-  imports: [BlackshieldSharedModule, RouterModule.forChild([HOME_ROUTE])],
+  imports: [BlackshieldSharedModule, ThemeModulex, RouterModule.forChild([HOME_ROUTE])],
   declarations: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

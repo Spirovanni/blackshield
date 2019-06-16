@@ -14,3 +14,4 @@ export * from './util/datepicker-adapter';
 
 export * from './@core/core.module';
 export * from './@theme/theme-modulex.module';
+export * from './@core/data/state.service';
