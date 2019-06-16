@@ -2,11 +2,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { errorRoute, navbarRoute } from './../layouts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 // import { ECommerceComponent } from './e-commerce/e-commerce.component';
 // import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
 const routes: Routes = [
   {

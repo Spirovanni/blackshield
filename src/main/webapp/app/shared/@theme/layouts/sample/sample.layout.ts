@@ -1,7 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, NavigationEnd, NavigationError } from '@angular/router';
-
-import { JhiLanguageHelper } from 'app/core';
+import { Component, OnDestroy } from '@angular/core';
 import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
 import { NbMediaBreakpoint, NbMediaBreakpointsService, NbMenuItem, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
@@ -11,9 +8,37 @@ import { StateService } from '../../../@core/utils';
 @Component({
   selector: 'ngx-sample-layout',
   styleUrls: ['./sample.layout.scss'],
-  templateUrl: './sample.component.html'
+  template: `
+    <nb-layout [center]="layout.id === 'center-column'" windowMode>
+      <nb-layout-header fixed>
+        <ngx-header [position]="sidebar.id === 'start' ? 'normal' : 'inverse'"></ngx-header>
+      </nb-layout-header>
+      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive [end]="sidebar.id === 'end'">
+        <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
+          <a href="#" class="btn btn-hero-success main-btn"> <i class="ion ion-social-github"></i> <span>Support Us</span> </a>
+        </nb-sidebar-header>
+        <ng-content select="nb-menu"></ng-content>
+      </nb-sidebar>
+      <nb-layout-column class="main-content">
+        <ng-content select="router-outlet"></ng-content>
+      </nb-layout-column>
+      <nb-layout-column start class="small" *ngIf="layout.id === 'two-column' || layout.id === 'three-column'">
+        <nb-menu [items]="subMenu"></nb-menu>
+      </nb-layout-column>
+      <nb-layout-column class="small" *ngIf="layout.id === 'three-column'">
+        <nb-menu [items]="subMenu"></nb-menu>
+      </nb-layout-column>
+      <nb-layout-footer fixed>
+        <ngx-footer></ngx-footer>
+      </nb-layout-footer>
+      <nb-sidebar class="settings-sidebar" tag="settings-sidebar" state="collapsed" fixed [end]="sidebar.id !== 'end'">
+        <ngx-theme-settings></ngx-theme-settings>
+      </nb-sidebar>
+    </nb-layout>
+    <ngx-toggle-settings-button></ngx-toggle-settings-button>
+  `
 })
-export class SampleLayoutComponent implements OnDestroy, OnInit {
+export class SampleLayoutComponent implements OnDestroy {
   subMenu: NbMenuItem[] = [
     {
       title: 'PAGE LEVEL MENU',
@@ -62,19 +87,7 @@ export class SampleLayoutComponent implements OnDestroy, OnInit {
 
   currentTheme: string;
 
-  // constructor(private jhiLanguageHelper: JhiLanguageHelper, private router: Router) {}
-
-  private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
-    let title: string = routeSnapshot.data && routeSnapshot.data['pageTitle'] ? routeSnapshot.data['pageTitle'] : 'blackshieldApp';
-    if (routeSnapshot.firstChild) {
-      title = this.getPageTitle(routeSnapshot.firstChild) || title;
-    }
-    return title;
-  }
-
   constructor(
-    private jhiLanguageHelper: JhiLanguageHelper,
-    private router: Router,
     protected stateService: StateService,
     protected menuService: NbMenuService,
     protected themeService: NbThemeService,
@@ -113,17 +126,6 @@ export class SampleLayoutComponent implements OnDestroy, OnInit {
       .subscribe(theme => {
         this.currentTheme = theme.name;
       });
-  }
-
-  ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.jhiLanguageHelper.updateTitle(this.getPageTitle(this.router.routerState.snapshot.root));
-      }
-      if (event instanceof NavigationError && event.error.status === 404) {
-        this.router.navigate(['/404']);
-      }
-    });
   }
 
   ngOnDestroy() {
