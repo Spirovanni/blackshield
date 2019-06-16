@@ -23,7 +23,10 @@ export class HeaderComponent implements OnInit {
 
   user: any;
   account: Account;
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [
+    { title: 'Profile', url: '/pages/iot-dashboard', icon: 'fa fa-fw fa-user' },
+    { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' }
+  ];
 
   inProduction: boolean;
   isNavbarCollapsed: boolean;
