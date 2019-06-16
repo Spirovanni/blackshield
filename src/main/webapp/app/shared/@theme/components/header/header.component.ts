@@ -25,7 +25,8 @@ export class HeaderComponent implements OnInit {
   account: Account;
   userMenu = [
     { title: 'Profile', url: '/pages/iot-dashboard', icon: 'fa fa-fw fa-user' },
-    { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' }
+    { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' },
+    { title: 'Settings', link: 'settings', icon: 'fa fa-fw fa-wrench' }
   ];
 
   inProduction: boolean;
