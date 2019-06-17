@@ -36,23 +36,12 @@ eg $input-color: red;
 
 // Theme styles
 @import '~ionicons-inline/dist/ionicons';
-@import '~typeface-exo/index.css';
-@import '~pace-js/templates/pace-theme-flash.tmpl.css';
-@import '~@nebular/theme/styles/prebuilt/default';
-@import '~@nebular/theme/styles/prebuilt/cosmic';
-@import '~@nebular/theme/styles/prebuilt/corporate';
 @import '~roboto-fontface/css/roboto/roboto-fontface.css';
 $nebular-icons-font-path: '~nebular-icons/fonts';
 @import '~typeface-exo/index.css';
-@import '~roboto-fontface/css/roboto/roboto-fontface.css';
 @import '~nebular-icons/scss/nebular-icons';
 @import '~font-awesome/scss/font-awesome.scss';
 @import '~socicon/css/socicon.css';
-
-@import '~ngx-ui-switch/ui-switch.component.scss';
-@import '~@ng-select/ng-select/themes/default.theme.css';
-@import '~leaflet/dist/leaflet.css';
-@import '~angular2-toaster/toaster.css';
 
 // install the framework and custom global styles
 @include nb-install() {

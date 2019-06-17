@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BlackshieldSharedModule } from 'app/shared';
+import { ThemeModulex } from '../shared';
 
 import {
   PasswordStrengthBarComponent,
@@ -15,7 +16,7 @@ import {
 } from './';
 
 @NgModule({
-  imports: [BlackshieldSharedModule, RouterModule.forChild(accountState)],
+  imports: [BlackshieldSharedModule, ThemeModulex, RouterModule.forChild(accountState)],
   declarations: [
     ActivateComponent,
     RegisterComponent,

@@ -1,7 +1,9 @@
 import './vendor.ts';
 
+import { APP_BASE_HREF } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxWebstorageModule } from 'ngx-webstorage';
@@ -21,12 +23,16 @@ import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
 import { ThemeModulex } from './shared';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
     NgJhipsterModule.forRoot({
       // set below to true to make alerts look like toast
@@ -35,8 +41,11 @@ import { ThemeModulex } from './shared';
       i18nEnabled: true,
       defaultI18nLang: 'en'
     }),
+    NgbModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModulex.forRoot(),
+    StoreModule.forRoot({}),
+    DragulaModule.forRoot(),
     BlackshieldSharedModule.forRoot(),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
@@ -66,6 +75,10 @@ import { ThemeModulex } from './shared';
       provide: HTTP_INTERCEPTORS,
       useClass: NotificationInterceptor,
       multi: true
+    },
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/'
     }
   ],
   bootstrap: [JhiMainComponent]

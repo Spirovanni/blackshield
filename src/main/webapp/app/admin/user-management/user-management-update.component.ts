@@ -19,6 +19,7 @@ export class UserMgmtUpdateComponent implements OnInit {
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*')]],
     firstName: ['', [Validators.maxLength(50)]],
     lastName: ['', [Validators.maxLength(50)]],
+    imageUrl: ['', [Validators.maxLength(80)]],
     email: ['', [Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     activated: [true],
     langKey: [],
@@ -57,7 +58,8 @@ export class UserMgmtUpdateComponent implements OnInit {
       email: user.email,
       activated: user.activated,
       langKey: user.langKey,
-      authorities: user.authorities
+      authorities: user.authorities,
+      imageUrl: user.imageUrl
     });
   }
 
@@ -83,6 +85,7 @@ export class UserMgmtUpdateComponent implements OnInit {
     user.activated = this.editForm.get(['activated']).value;
     user.langKey = this.editForm.get(['langKey']).value;
     user.authorities = this.editForm.get(['authorities']).value;
+    user.imageUrl = this.editForm.get(['imageUrl']).value;
   }
 
   private onSaveSuccess(result) {
