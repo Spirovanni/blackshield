@@ -133,7 +133,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.languageHelper.getAll().then(languages => {
       this.languages = languages;
     });
-    this.registerAuthenticationSuccess();
   }
 
   save() {
@@ -183,14 +182,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
       langKey: account.langKey,
       login: account.login,
       imageUrl: account.imageUrl
-    });
-  }
-
-  registerAuthenticationSuccess() {
-    this.eventManager.subscribe('authenticationSuccess', message => {
-      this.accountService.identity().then(account => {
-        this.account = account;
-      });
     });
   }
 
