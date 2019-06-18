@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'app/core';
 import { PasswordService } from './password.service';
 
 @Component({
   selector: 'jhi-password',
-  templateUrl: './password.component.html'
+  templateUrl: './password.component.html',
+  styleUrls: ['password.scss']
 })
 export class PasswordComponent implements OnInit {
   doNotMatch: string;

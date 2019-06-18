@@ -81,6 +81,7 @@ import { ThemeModulex } from './shared';
       useValue: '/'
     }
   ],
+  exports: [ActiveMenuDirective, NavbarComponent],
   bootstrap: [JhiMainComponent]
 })
 export class BlackshieldAppModule {

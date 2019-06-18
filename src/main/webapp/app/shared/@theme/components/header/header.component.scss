@@ -28,6 +28,10 @@
     display: block;
   }
 
+  :host nb-layout-header ::ng-deep nav {
+    justify-content: flex-end;
+  }
+
   .header-container {
     display: flex;
     align-items: center;
