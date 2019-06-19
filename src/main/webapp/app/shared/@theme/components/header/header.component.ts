@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
@@ -8,10 +8,11 @@ import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, AccountService, LoginModalService, LoginService, Account } from 'app/core';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
+import { NbMenuService, NB_WINDOW, NbSidebarService } from '@nebular/theme';
 import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-header',
@@ -24,10 +25,14 @@ export class HeaderComponent implements OnInit {
   user: any;
   account: Account;
   userMenu = [
-    { title: 'Profile', url: '/pages/iot-dashboard', icon: 'fa fa-fw fa-user' },
-    { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' },
-    { title: 'Settings', link: 'settings', icon: 'fa fa-fw fa-wrench' }
+    // { title: 'Profile', url: '/pages/iot-dashboard', icon: 'fa fa-fw fa-user' },
+    // { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' },
+    { title: 'Settings', link: 'settings', icon: 'fa fa-fw fa-wrench' },
+    { title: 'Password', link: 'password', icon: 'fa fa-fw fa-clock-o' },
+    { title: 'Register', link: 'register', icon: 'fa fa-fw fa-user-plus' }
   ];
+
+  items = [{ title: 'Profile' }, { title: 'Logout' }];
 
   inProduction: boolean;
   isNavbarCollapsed: boolean;
@@ -49,7 +54,9 @@ export class HeaderComponent implements OnInit {
     private menuService: NbMenuService,
     private userService: UserData,
     private analyticsService: AnalyticsService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private nbMenuService: NbMenuService,
+    @Inject(NB_WINDOW) private window
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
@@ -69,6 +76,18 @@ export class HeaderComponent implements OnInit {
     this.accountService.identity().then((account: Account) => {
       this.account = account;
     });
+
+    this.nbMenuService
+      .onItemClick()
+      .pipe(
+        filter(({ tag }) => tag === 'my-context-menu'),
+        map(({ item: { title } }) => title)
+      )
+      .subscribe(title => {
+        this.collapseNavbar();
+        this.loginService.logout();
+        this.router.navigate(['']);
+      });
   }
 
   changeLanguage(languageKey: string) {

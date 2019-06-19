@@ -1,6 +1,7 @@
 <nb-layout [center]="layout.id === 'center-column'" windowMode>
     <nb-layout-header fixed>
         <ngx-header></ngx-header>
+<!--        <jhi-navbar></jhi-navbar>-->
     </nb-layout-header>
 
 <!--    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive [end]="sidebar.id === 'end'">-->
@@ -68,6 +69,7 @@
 
     <nb-sidebar class="settings-sidebar" tag="settings-sidebar" state="collapsed" fixed [end]="sidebar.id !== 'end'">
         <ngx-theme-settings></ngx-theme-settings>
+        <ngx-theme-switcher-list></ngx-theme-switcher-list>
     </nb-sidebar>
 </nb-layout>
 <ngx-toggle-settings-button></ngx-toggle-settings-button>

@@ -57,6 +57,11 @@ import { OneColumnLayoutComponent, SampleLayoutComponent, ThreeColumnsLayoutComp
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgJhipsterModule } from 'ng-jhipster';
+import { RouterModule } from '@angular/router';
+import { BlackshieldSharedModule } from 'app/shared';
+// import {ActiveMenuDirective, ErrorComponent, PageRibbonComponent} from '../../layouts';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -136,7 +141,7 @@ const NB_THEME_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [...BASE_MODULES, ...NB_MODULES],
+  imports: [...BASE_MODULES, ...NB_MODULES, FontAwesomeModule, NgJhipsterModule, RouterModule, BlackshieldSharedModule],
   exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
   declarations: [...COMPONENTS, ...PIPES],
   entryComponents: [...ENTRY_COMPONENTS]

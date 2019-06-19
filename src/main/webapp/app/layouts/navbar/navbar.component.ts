@@ -5,7 +5,7 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { SessionStorageService } from 'ngx-webstorage';
 
 import { VERSION } from 'app/app.constants';
-import { JhiLanguageHelper, AccountService, LoginModalService, LoginService } from 'app/core';
+import { JhiLanguageHelper, AccountService, LoginModalService, LoginService, Account } from 'app/core';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
@@ -22,8 +22,16 @@ export class NavbarComponent implements OnInit {
   @Input() position = 'normal';
 
   user: any;
+  account: Account;
+  userMenu = [
+    // { title: 'Profile', url: '/pages/iot-dashboard', icon: 'fa fa-fw fa-user' },
+    // { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' },
+    { title: 'Settings', link: 'settings', icon: 'fa fa-fw fa-wrench' },
+    { title: 'Password', link: 'password', icon: 'fa fa-fw fa-clock-o' },
+    { title: 'Register', link: 'register', icon: 'fa fa-fw fa-user-plus' }
+  ];
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  items = [{ title: 'Profile' }, { title: 'Logout' }];
 
   inProduction: boolean;
   isNavbarCollapsed: boolean;
@@ -45,7 +53,8 @@ export class NavbarComponent implements OnInit {
     private menuService: NbMenuService,
     private userService: UserData,
     private analyticsService: AnalyticsService,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private nbMenuService: NbMenuService
   ) {
     this.version = VERSION ? 'v' + VERSION : '';
     this.isNavbarCollapsed = true;
@@ -62,6 +71,9 @@ export class NavbarComponent implements OnInit {
     });
 
     this.userService.getUsers().subscribe((users: any) => (this.user = users.nick));
+    this.accountService.identity().then((account: Account) => {
+      this.account = account;
+    });
   }
 
   changeLanguage(languageKey: string) {

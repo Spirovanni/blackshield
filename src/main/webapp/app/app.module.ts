@@ -13,7 +13,7 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { BlackshieldSharedModule } from 'app/shared';
+import { BlackshieldSharedModule, ThemeModulex } from 'app/shared';
 import { BlackshieldCoreModule } from 'app/core';
 import { BlackshieldAppRoutingModule } from './app-routing.module';
 import { BlackshieldHomeModule } from './home/home.module';
@@ -27,7 +27,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
-import { ThemeModulex } from './shared';
 
 @NgModule({
   imports: [
@@ -52,7 +51,8 @@ import { ThemeModulex } from './shared';
     BlackshieldAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     BlackshieldEntityModule,
-    BlackshieldAppRoutingModule
+    BlackshieldAppRoutingModule,
+    ThemeModulex
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [
@@ -81,6 +81,7 @@ import { ThemeModulex } from './shared';
       useValue: '/'
     }
   ],
+  exports: [ActiveMenuDirective, NavbarComponent],
   bootstrap: [JhiMainComponent]
 })
 export class BlackshieldAppModule {
