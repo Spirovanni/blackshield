@@ -10,6 +10,15 @@ Navbar
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 55px;
+
+  //.info-container {
+  //  margin-right: 10px;
+  //}
+
+  .account-navigator {
+    margin-right: 35px;
+  }
 
   .left {
     display: flex;
@@ -219,7 +228,7 @@ Navbar
   &.logo {
     padding: 50px 25px;
     .logo-img {
-      height: 95px;
+      height: 85px;
       width: 190px;
       display: inline-block;
       vertical-align: middle;

@@ -22,7 +22,7 @@
             [class.right]="position === 'normal'"
             [class.left]="position === 'inverse'">
             <nb-action *nbIsGranted="['view', 'account']" [ngSwitch]="isAuthenticated()">
-                <nb-user [nbContextMenu]="userMenu" [name]="account?.firstName" [picture]="account?.imageUrl">
+                <nb-user class="account-navigator" [nbContextMenu]="userMenu" [name]="account?.firstName" [picture]="account?.imageUrl">
                     <span class="menu-title">Hello</span>
                 </nb-user>
             </nb-action>
