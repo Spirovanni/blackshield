@@ -10,16 +10,6 @@ Navbar
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 50px;
-
-  .fa {
-    height: 25px;
-  }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-  }
 
   .left {
     display: flex;
@@ -32,22 +22,28 @@ Navbar
     flex-direction: row-reverse;
   }
 
-  .logo-container {
+  .logo-containter {
     display: flex;
     align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
   }
 
   .control-item {
     display: block;
   }
 
+  :host nb-layout-header ::ng-deep nav {
+    justify-content: flex-end;
+  }
+
   .header-container {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: auto;
 
     .navigation {
-      padding-right: nb-theme(padding);
+      @include nb-ltr(padding-right, nb-theme(padding));
+      @include nb-rtl(padding-left, nb-theme(padding));
       font-size: 2.5rem;
       text-decoration: none;
 
@@ -60,6 +56,8 @@ Navbar
       padding: 0 nb-theme(padding);
       font-size: 1.75rem;
       font-weight: nb-theme(font-weight-bolder);
+      @include nb-ltr(border-left, 1px solid nb-theme(separator));
+      @include nb-rtl(border-right, 1px solid nb-theme(separator));
       white-space: nowrap;
 
       span {
@@ -68,20 +66,102 @@ Navbar
     }
   }
 
-  .toggle-layout a {
-    display: inline;
+  @include nb-for-theme(corporate) {
+    $menu-action-separator-color: #3f4550;
+
+    nb-action {
+      @include nb-ltr(border-left-color, $menu-action-separator-color);
+      @include nb-rtl(border-right-color, $menu-action-separator-color);
+    }
+
+    .header-container .logo {
+      @include nb-ltr(border, none);
+      @include nb-rtl(border, none);
+    }
+
+    .header-container ::ng-deep ngx-theme-switcher .dropdown-toggle {
+      color: nb-theme(color-white);
+      background: transparent;
+    }
+  }
+
+  ngx-layout-direction-switcher {
+    margin: 0 1.5rem;
+  }
+
+  ngx-theme-switcher {
+    margin: nb-theme(layout-padding);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down(xl) {
+    ngx-layout-direction-switcher {
+      display: none;
+    }
+  }
+
+  .toggle-settings ::ng-deep a {
+    display: block;
     text-decoration: none;
-    border-left: 1px solid nb-theme(separator);
     line-height: 1;
 
     i {
       color: nb-theme(color-fg-highlight);
       font-size: 2.25rem;
+      border-radius: 50%;
+      position: relative;
+      animation-name: pulse-light;
+
+      &::after {
+        content: ' ';
+        // hack to be able to set border-radius
+        background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        border-radius: 50%;
+        pointer-events: none;
+
+        position: absolute;
+        top: 52.3%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 13%;
+        height: 13%;
+
+        animation: 3s linear infinite pulse;
+
+        @include nb-for-theme(default) {
+          animation-name: pulse-light;
+        }
+      }
+    }
+  }
+
+  @include keyframes(pulse) {
+    0% {
+      box-shadow: 0 0 1px 0 rgba(nb-theme(color-fg-highlight), 0);
+    }
+    20% {
+      box-shadow: 0 0 3px 10px rgba(nb-theme(color-fg-highlight), 0.4);
+    }
+    100% {
+      box-shadow: 0 0 5px 20px rgba(nb-theme(color-fg-highlight), 0);
+    }
+  }
+
+  @include keyframes(pulse-light) {
+    0% {
+      box-shadow: 0 0 1px 0 rgba(115, 255, 208, 0);
+    }
+    20% {
+      box-shadow: 0 0 3px 10px rgba(115, 255, 208, 0.4);
+    }
+    100% {
+      box-shadow: 0 0 5px 20px rgba(115, 255, 208, 0);
     }
   }
 
   @include media-breakpoint-down(md) {
-    nb-action:not(.toggle-layout) {
+    nb-action:not(.toggle-settings) {
       border: none;
     }
 
@@ -89,13 +169,21 @@ Navbar
       display: none;
     }
 
-    .toggle-layout {
+    .toggle-settings {
       padding: 0;
+    }
+
+    ngx-layout-direction-switcher {
+      display: none;
+    }
+
+    ngx-theme-switcher {
+      margin: 0 0.5rem;
     }
   }
 
   @include media-breakpoint-down(sm) {
-    nb-user .user-name {
+    nb-user ::ng-deep .user-name {
       display: none;
     }
   }
@@ -107,144 +195,32 @@ Navbar
       }
     }
 
-    .toggle-layout {
+    .toggle-settings {
       display: none;
     }
 
-    nb-action:not(.toggle-layout) {
+    ngx-theme-switcher {
+      display: none;
+    }
+
+    nb-action:not(.toggle-settings) {
       padding: 0;
     }
   }
 
   @include media-breakpoint-down(xs) {
-    .right {
+    .right ::ng-deep {
       display: none;
     }
   }
 }
 
-/* ==========================================================================
-JHipster Default Style
-========================================================================== */
-
-.navbar-version {
-  font-size: 10px;
-  color: #ccc;
-}
-
-.jh-navbar {
-  padding: 0.01em 1em;
-  .profile-image {
-    margin: -10px 0px;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-  }
-  .dropdown-item.active,
-  .dropdown-item.active:focus,
-  .dropdown-item.active:hover {
-    background-color: nb-theme(menu-active-bg);
-    color: #7bff24;
-    min-width: 140px;
-    font-weight: nb-theme(menu-active-font-weight);
-  }
-
-  .dropdown-item {
-    font-family: nb-theme(menu-font-family);
-    font-size: nb-theme(menu-font-size);
-    font-weight: nb-theme(menu-font-weight);
-    background: nb-theme(menu-bg);
-    color: nb-theme(menu-fg);
-    min-width: 140px;
-    padding: nb-theme(menu-item-padding);
-
-    a {
-      padding: nb-theme(menu-item-padding);
-      border-radius: nb-theme(menu-submenu-item-border-radius);
-    }
-  }
-
-  .dropdown-menu {
-    margin-top: 80px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: nb-theme(btn-border-radius);
-    border-bottom-right-radius: nb-theme(btn-border-radius);
-    border: none;
-    width: 100%;
-    color: nb-theme(btn-fg);
-    padding: 0.75rem 0;
-    min-width: 140px;
-  }
-
-  .dropdown-item {
-    color: inherit;
-    padding: 0.75rem 1.5rem;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-    cursor: default;
-    margin-top: -2px;
-    &:hover {
-      background-color: nb-theme(btn-secondary-border);
-    }
-  }
-
-  .control-item {
-    font-size: nb-theme(menu-icon-font-size);
-    width: nb-theme(menu-icon-font-size);
-    margin: nb-theme(menu-icon-margin);
-    text-align: center;
-    color: nb-theme(menu-icon-color);
-  }
-
-  .dropdown-toggle::after {
-    margin-left: 0.15em;
-  }
-  ul.navbar-nav {
-    padding: 0.2em;
-    .nav-item {
-      font-size: nb-theme(user-font-size);
-      line-height: nb-theme(user-line-height);
-      padding: nb-theme(menu-item-padding);
-      margin-top: 10px;
-      border-radius: nb-theme(menu-submenu-item-border-radius);
-
-      &.background {
-        color: nb-theme(user-fg);
-      }
-    }
-  }
-  a.nav-link {
-    font-weight: 400;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .jh-navbar-toggler {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .jh-logo-container {
-    width: 100%;
-  }
-}
-
-.navbar-title {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* ==========================================================================
-Logo styles
-========================================================================== */
 .navbar-brand {
   &.logo {
-    padding: 350px 25px;
+    padding: 50px 25px;
     .logo-img {
-      height: 45px;
-      width: 70px;
+      height: 95px;
+      width: 190px;
       display: inline-block;
       vertical-align: middle;
       background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
@@ -258,4 +234,8 @@ Logo styles
       }
     }
   }
+}
+.navbar-version {
+  font-size: 10px;
+  color: #ccc;
 }
