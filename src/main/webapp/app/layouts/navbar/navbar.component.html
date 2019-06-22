@@ -1,37 +1,121 @@
 <div class="header-container"
      [class.left]="position === 'normal'"
-     [class.right]="position === 'inverse'">
+     [class.right]="position === 'inverse'" [ngSwitch]="isAuthenticated()">
     <div class="logo-containter">
         <a class="navbar-brand logo float-left" routerLink="/" (click)="goToHome()">
             <span class="logo-img"></span>
         </a>
     </div>
-    <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()" [ngSwitch]="isAuthenticated()">
+    <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()" *ngSwitchCase="true">
     </a>
-    <a (click)="toggleSidebar()" href="#" class="navigation" [ngSwitch]="isAuthenticated()"><i class="nb-menu"></i></a>
+    <a (click)="toggleSidebar()" href="#" class="navigation" *ngSwitchCase="true"><i class="nb-menu"></i></a>
     <span class="navbar-version">{{version}}</span>
 </div>
+
+<div class="header-container"
+     [ngSwitch]="isAuthenticated()" >
+
+</div>
+
 <div class="header-container">
-    <button nbButton [nbContextMenu]="items">
-        Show Menu
-    </button>
+
+<!--    <button nbButton [nbContextMenu]="items">-->
+<!--        Show Menu-->
+<!--    </button>-->
+
+<!--    <nb-actions size="medium"-->
+<!--                [class.right]="position === 'normal'"-->
+<!--                [class.left]="position === 'inverse'">-->
+<!--        <nb-action class="control-item" icon="nb-location" aria-hidden="true">-->
+<!--            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" *ngIf="languages">-->
+<!--                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown" *ngIf="languages.length > 1">-->
+<!--                            <span>-->
+
+<!--                            </span>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu" ngbDropdownMenu *ngIf="languages.length > 1">-->
+<!--                    <li *ngFor="let language of languages">-->
+<!--                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();"><i class="fa fa-flag" aria-hidden="true"></i>  {{language | findLanguageFromKey}}</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </nb-action>-->
+<!--    </nb-actions>-->
 <!--        <ngx-theme-switcher></ngx-theme-switcher>-->
 <!--        <ngx-layout-direction-switcher></ngx-layout-direction-switcher>-->
+        <ul class="navbar-nav ml-auto" >
+            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" *ngIf="languages">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown" *ngIf="languages.length > 1">
+                    <!--                        <span>-->
+                    <nb-action class="control-item location-icon" icon="nb-location" aria-hidden="true"></nb-action>
+                    <!--                        </span>-->
+                </a>
+                <ul class="dropdown-menu down-language" ngbDropdownMenu *ngIf="languages.length > 1">
+                    <li *ngFor="let language of languages">
+                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();"><i class="fa fa-flag" aria-hidden="true"></i>  {{language | findLanguageFromKey}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+<!--        <ul class="navbar-nav ml-auto" >-->
+<!--            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" (click)="logout()" id="logout">-->
+<!--                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" *ngIf="languages.length > 1">-->
+<!--                    &lt;!&ndash;                        <span>&ndash;&gt;-->
+<!--                    <nb-action class="control-item location-icon" icon="nb-location" aria-hidden="true"></nb-action>-->
+<!--                    &lt;!&ndash;                        </span>&ndash;&gt;-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu down-language" ngbDropdownMenu *ngIf="languages.length > 1">-->
+<!--                    <li *ngFor="let language of languages">-->
+<!--                        <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();"><i class="fa fa-flag" aria-hidden="true"></i>  {{language | findLanguageFromKey}}</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" (click)="login()" id="login" *ngSwitchCase="false">-->
+<!--                            &lt;!&ndash;                <i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                <span>-->
+<!--                    <nb-action class="control-item" icon="nb-power" aria-hidden="true"></nb-action>-->
+<!--                </span>-->
+<!--                <span jhiTranslate="global.menu.account.login">Sign in</span>-->
+<!--            </li>-->
+<!--            <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" (click)="logout()" id="logout" *ngSwitchCase="true">-->
+<!--                &lt;!&ndash;                <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                <span>-->
+<!--                    <nb-action class="control-item" icon="nb-close-circled" aria-hidden="true"></nb-action>-->
+<!--                </span>-->
+<!--                <span jhiTranslate="global.menu.account.logout">Sign out</span>-->
+<!--            </li>-->
         <nb-actions
             size="medium"
             [class.right]="position === 'normal'"
-            [class.left]="position === 'inverse'">
-            <nb-action *nbIsGranted="['view', 'account']" [ngSwitch]="isAuthenticated()">
-                <nb-user class="account-navigator" [nbContextMenu]="userMenu" [name]="account?.firstName" [picture]="account?.imageUrl">
+            [class.left]="position === 'inverse'" [ngSwitch]="isAuthenticated()">
+            <nb-action *nbIsGranted="['view', 'account']">
+                <nb-user class="account-navigator" [nbContextMenu]="userMenu" [name]="account?.firstName" [picture]="account?.imageUrl" *ngSwitchCase="true">
                     <span class="menu-title">Hello</span>
                 </nb-user>
             </nb-action>
 
-            <nb-action class="control-item" icon="nb-bar-chart" href="/pages/iot-dashboard">
+            <nb-action class="control-item" icon="nb-close-circled" href="/pages/iot-dashboard" (click)="logout()" id="logout" *ngSwitchCase="true">
             </nb-action>
-            <nb-action class="control-item" icon="nb-email"></nb-action>
-            <nb-action class="control-item">
+            <nb-action class="control-item" icon="nb-power" (click)="login()" id="login" *ngSwitchCase="false"></nb-action>
+            <nb-action class="control-item" >
               <nb-search type="rotate-layout" (click)="startSearch()"></nb-search>
             </nb-action>
         </nb-actions>
+<!--        <ul class="navbar-nav ml-auto" >-->
+<!--            <li class="nav-item" (click)="login()" id="login" *ngSwitchCase="false">-->
+<!--                &lt;!&ndash;                <i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                <span>-->
+<!--                            <nb-action class="control-item" icon="nb-power" aria-hidden="true"></nb-action>-->
+<!--                        </span>-->
+<!--                <span jhiTranslate="global.menu.account.login">Sign in</span>-->
+<!--            </li>-->
+<!--            <li class="nav-item" (click)="logout()" id="logout" *ngSwitchCase="true">-->
+<!--                &lt;!&ndash;                <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                <span>-->
+<!--                            <nb-action class="control-item" icon="nb-close-circled" aria-hidden="true"></nb-action>-->
+<!--                        </span>-->
+<!--                <span jhiTranslate="global.menu.account.logout">Sign out</span>-->
+<!--            </li>-->
+<!--        </ul>-->
 </div>

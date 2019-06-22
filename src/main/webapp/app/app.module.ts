@@ -27,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
+import { NbAuthModule } from '@nebular/auth';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { CoreModule } from './shared';
     // jhipster-needle-angular-add-module JHipster will add new module here
     BlackshieldEntityModule,
     BlackshieldAppRoutingModule,
-    ThemeModulex
+    ThemeModulex,
+    NbAuthModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [
