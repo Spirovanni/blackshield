@@ -20,6 +20,15 @@ Navbar
     margin-right: 35px;
   }
 
+  .ngbdropdowntoggle {
+    color: #000088;
+  }
+
+  .location-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+  }
+
   .left {
     display: flex;
     width: 100%;
@@ -224,6 +233,14 @@ Navbar
   }
 }
 
+/* ==========================================================================
+Logo styles
+========================================================================== */
+
+.navbar-collapse {
+  width: 50px;
+}
+
 .navbar-brand {
   &.logo {
     padding: 50px 25px;
@@ -234,9 +251,6 @@ Navbar
       vertical-align: middle;
       background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
       background-size: contain;
-      font-size: 1.75rem;
-      font-weight: nb-theme(font-weight-bolder);
-      white-space: nowrap;
 
       span {
         font-weight: nb-theme(font-weight-normal);
@@ -247,4 +261,249 @@ Navbar
 .navbar-version {
   font-size: 10px;
   color: #ccc;
+}
+
+/* ==========================================================================
+JHipster Default Style
+========================================================================== */
+
+.navbar-version {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.login {
+  font-size: 15px;
+  margin-left: 3px;
+}
+
+.jh-navbar {
+  padding: 0.01em 1em;
+  display: inline;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  .profile-image {
+    margin: 0 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: solid 2px #bcc3cc;
+  }
+  .dropdown-item.active,
+  .dropdown-item.active:focus,
+  .dropdown-item.active:hover {
+    background-color: nb-theme(menu-bg);
+    color: nb-theme(color-success);
+    min-width: 140px;
+    font-weight: nb-theme(menu-active-font-weight);
+  }
+
+  .dropdown-item {
+    font-family: nb-theme(menu-font-family);
+    font-size: nb-theme(menu-font-size);
+    font-weight: nb-theme(menu-font-weight);
+    background: nb-theme(menu-bg);
+    color: nb-theme(menu-fg);
+    min-width: 120px;
+    padding: nb-theme(menu-item-padding);
+
+    a {
+      padding: nb-theme(menu-item-padding);
+      border-radius: nb-theme(menu-submenu-item-border-radius);
+    }
+  }
+
+  .dropdown-menu {
+    box-sizing: border-box;
+    outline-color: #0f6ab4;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: nb-theme(btn-border-radius);
+    border-bottom-right-radius: nb-theme(btn-border-radius);
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    list-style-type: none;
+    margin-top: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
+    border: none;
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 0.5rem 0;
+    min-width: 140px;
+
+    .propic {
+      margin-top: 25px;
+      color: #000088;
+    }
+  }
+
+  .propic {
+    margin-top: 5px;
+    color: #000088;
+  }
+
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: #000088;
+  }
+
+  .arrow {
+    border-left: solid transparent;
+    border-right: solid transparent;
+    color: #000088;
+
+    &::after {
+      position: absolute;
+      content: ' ';
+      width: 0;
+      height: 0;
+      top: 23px;
+      left: 15px;
+      border-left: solid transparent;
+      border-right: solid transparent;
+    }
+  }
+
+  .dropdown-item {
+    color: black;
+    background-color: white;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    cursor: default;
+    margin-top: -2px;
+    &:hover {
+      background-color: nb-theme(color-success);
+      color: white;
+      min-width: 140px;
+      font-weight: nb-theme(menu-active-font-weight);
+    }
+  }
+
+  .nb-location {
+    color: #0f6ab4;
+  }
+
+  .control-item .profile-pic {
+    font-size: nb-theme(menu-icon-font-size);
+    width: nb-theme(menu-icon-font-size);
+    //margin: nb-theme(menu-icon-margin);
+    margin-top: 16px;
+    text-align: center;
+    color: nb-theme(menu-icon-color);
+  }
+
+  .control-item {
+    font-size: nb-theme(menu-icon-font-size);
+    width: nb-theme(menu-icon-font-size);
+    margin: nb-theme(menu-icon-margin);
+    text-align: center;
+    color: nb-theme(menu-icon-color);
+  }
+
+  .dropdown-toggle {
+    color: transparent;
+  }
+
+  .dropdown-toggle::after {
+    margin-left: 0.15em;
+  }
+  ul.navbar-nav {
+    padding: 0.2em;
+    .nav-item {
+      font-size: nb-theme(user-font-size);
+      line-height: nb-theme(user-line-height);
+      padding: nb-theme(menu-item-padding);
+      margin-top: 10px;
+      border-radius: nb-theme(menu-submenu-item-border-radius);
+
+      &.background {
+        color: nb-theme(user-fg);
+      }
+    }
+  }
+  a.nav-link {
+    font-weight: 400;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jh-navbar-toggler {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .jh-logo-container {
+    width: 100%;
+  }
+}
+
+.navbar-title {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+Menu styles
+========================================================================== */
+
+:host ::ng-deep nb-menu {
+  display: inline;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+
+  nb-context-menu {
+    margin: 20px;
+  }
+
+  ul.menu-items {
+    margin: 20px;
+    padding: 0.5rem 0;
+
+    .menu-item {
+      border: none;
+      white-space: nowrap;
+
+      &:first-child {
+        border: none;
+      }
+
+      a {
+        cursor: pointer;
+        border-radius: 0;
+        padding: 0;
+
+        .menu-icon {
+          font-size: 1.5rem;
+          width: auto;
+        }
+
+        .menu-title {
+          padding: 0.375rem 3rem;
+          @include nb-rtl(text-align, right);
+        }
+
+        .menu-icon ~ .menu-title {
+          @include nb-ltr(padding-left, 0);
+          @include nb-rtl(padding-right, 0);
+        }
+
+        .menu-icon:first-child {
+          @include nb-ltr(padding-left, 1rem);
+          @include nb-rtl(padding-right, 1rem);
+        }
+      }
+    }
+  }
 }
