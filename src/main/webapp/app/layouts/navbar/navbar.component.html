@@ -1,7 +1,7 @@
 <div class="header-container"
      [class.left]="position === 'normal'"
      [class.right]="position === 'inverse'" [ngSwitch]="isAuthenticated()">
-    <div class="logo-containter">
+    <div class="logo-container">
         <a class="navbar-brand logo float-left" routerLink="/" (click)="goToHome()">
             <span class="logo-img"></span>
         </a>
@@ -89,7 +89,7 @@
             size="medium"
             [class.right]="position === 'normal'"
             [class.left]="position === 'inverse'" [ngSwitch]="isAuthenticated()">
-            <nb-action *nbIsGranted="['view', 'account']">
+            <nb-action *ngSwitchCase="true">
                 <nb-user class="account-navigator" [nbContextMenu]="userMenu" [name]="account?.firstName" [picture]="account?.imageUrl" *ngSwitchCase="true">
                     <span class="menu-title">Hello</span>
                 </nb-user>

@@ -40,8 +40,9 @@ Navbar
     flex-direction: row-reverse;
   }
 
-  .logo-containter {
+  .logo-container {
     display: flex;
+    margin-top: 5px;
     align-items: center;
     width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
   }
@@ -259,18 +260,14 @@ Logo styles
   }
 }
 .navbar-version {
-  font-size: 10px;
+  font-size: 15px;
   color: #ccc;
+  margin-left: 20px;
 }
 
 /* ==========================================================================
 JHipster Default Style
 ========================================================================== */
-
-.navbar-version {
-  font-size: 10px;
-  color: #ccc;
-}
 
 .login {
   font-size: 15px;
