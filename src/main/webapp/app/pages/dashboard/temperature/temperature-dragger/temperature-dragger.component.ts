@@ -34,6 +34,10 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   private isMouseDown = false;
   private init = false;
 
+  private static toRad(angle) {
+    return (Math.PI * angle) / 180;
+  }
+
   @ViewChild('svgRoot') svgRoot: ElementRef;
 
   @Input() fillColors: string | string[] = '#2ec6ff';
@@ -341,9 +345,5 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   private toValueNumber(factor) {
     return Math.round((factor * (this.max - this.min)) / this.step) * this.step + this.min;
-  }
-
-  private static toRad(angle) {
-    return (Math.PI * angle) / 180;
   }
 }
