@@ -7,6 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import 'jquery';
 import 'ng2-page-scroll';
+import 'ngx-echarts';
 
 // Imports all fontawesome core and solid icons
 

@@ -10,15 +10,23 @@ Navbar
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 50px;
+  height: 55px;
 
-  .fa {
-    height: 25px;
+  //.info-container {
+  //  margin-right: 10px;
+  //}
+
+  .account-navigator {
+    margin-right: 35px;
   }
 
-  .nav-item {
-    display: flex;
-    align-items: center;
+  .ngbdropdowntoggle {
+    color: #000088;
+  }
+
+  .location-icon {
+    font-size: 2rem;
+    margin-right: 20px;
   }
 
   .left {
@@ -34,20 +42,27 @@ Navbar
 
   .logo-container {
     display: flex;
+    margin-top: 5px;
     align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
   }
 
   .control-item {
     display: block;
   }
 
+  :host nb-layout-header ::ng-deep nav {
+    justify-content: flex-end;
+  }
+
   .header-container {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: auto;
 
     .navigation {
-      padding-right: nb-theme(padding);
+      @include nb-ltr(padding-right, nb-theme(padding));
+      @include nb-rtl(padding-left, nb-theme(padding));
       font-size: 2.5rem;
       text-decoration: none;
 
@@ -60,6 +75,8 @@ Navbar
       padding: 0 nb-theme(padding);
       font-size: 1.75rem;
       font-weight: nb-theme(font-weight-bolder);
+      @include nb-ltr(border-left, 1px solid nb-theme(separator));
+      @include nb-rtl(border-right, 1px solid nb-theme(separator));
       white-space: nowrap;
 
       span {
@@ -68,20 +85,102 @@ Navbar
     }
   }
 
-  .toggle-layout a {
-    display: inline;
+  @include nb-for-theme(corporate) {
+    $menu-action-separator-color: #3f4550;
+
+    nb-action {
+      @include nb-ltr(border-left-color, $menu-action-separator-color);
+      @include nb-rtl(border-right-color, $menu-action-separator-color);
+    }
+
+    .header-container .logo {
+      @include nb-ltr(border, none);
+      @include nb-rtl(border, none);
+    }
+
+    .header-container ::ng-deep ngx-theme-switcher .dropdown-toggle {
+      color: nb-theme(color-white);
+      background: transparent;
+    }
+  }
+
+  ngx-layout-direction-switcher {
+    margin: 0 1.5rem;
+  }
+
+  ngx-theme-switcher {
+    margin: nb-theme(layout-padding);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down(xl) {
+    ngx-layout-direction-switcher {
+      display: none;
+    }
+  }
+
+  .toggle-settings ::ng-deep a {
+    display: block;
     text-decoration: none;
-    border-left: 1px solid nb-theme(separator);
     line-height: 1;
 
     i {
       color: nb-theme(color-fg-highlight);
       font-size: 2.25rem;
+      border-radius: 50%;
+      position: relative;
+      animation-name: pulse-light;
+
+      &::after {
+        content: ' ';
+        // hack to be able to set border-radius
+        background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        border-radius: 50%;
+        pointer-events: none;
+
+        position: absolute;
+        top: 52.3%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 13%;
+        height: 13%;
+
+        animation: 3s linear infinite pulse;
+
+        @include nb-for-theme(default) {
+          animation-name: pulse-light;
+        }
+      }
+    }
+  }
+
+  @include keyframes(pulse) {
+    0% {
+      box-shadow: 0 0 1px 0 rgba(nb-theme(color-fg-highlight), 0);
+    }
+    20% {
+      box-shadow: 0 0 3px 10px rgba(nb-theme(color-fg-highlight), 0.4);
+    }
+    100% {
+      box-shadow: 0 0 5px 20px rgba(nb-theme(color-fg-highlight), 0);
+    }
+  }
+
+  @include keyframes(pulse-light) {
+    0% {
+      box-shadow: 0 0 1px 0 rgba(115, 255, 208, 0);
+    }
+    20% {
+      box-shadow: 0 0 3px 10px rgba(115, 255, 208, 0.4);
+    }
+    100% {
+      box-shadow: 0 0 5px 20px rgba(115, 255, 208, 0);
     }
   }
 
   @include media-breakpoint-down(md) {
-    nb-action:not(.toggle-layout) {
+    nb-action:not(.toggle-settings) {
       border: none;
     }
 
@@ -89,13 +188,21 @@ Navbar
       display: none;
     }
 
-    .toggle-layout {
+    .toggle-settings {
       padding: 0;
+    }
+
+    ngx-layout-direction-switcher {
+      display: none;
+    }
+
+    ngx-theme-switcher {
+      margin: 0 0.5rem;
     }
   }
 
   @include media-breakpoint-down(sm) {
-    nb-user .user-name {
+    nb-user ::ng-deep .user-name {
       display: none;
     }
   }
@@ -107,44 +214,84 @@ Navbar
       }
     }
 
-    .toggle-layout {
+    .toggle-settings {
       display: none;
     }
 
-    nb-action:not(.toggle-layout) {
+    ngx-theme-switcher {
+      display: none;
+    }
+
+    nb-action:not(.toggle-settings) {
       padding: 0;
     }
   }
 
   @include media-breakpoint-down(xs) {
-    .right {
+    .right ::ng-deep {
       display: none;
     }
   }
 }
 
 /* ==========================================================================
+Logo styles
+========================================================================== */
+
+.navbar-collapse {
+  width: 50px;
+}
+
+.navbar-brand {
+  &.logo {
+    padding: 50px 25px;
+    .logo-img {
+      height: 85px;
+      width: 190px;
+      display: inline-block;
+      vertical-align: middle;
+      background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
+      background-size: contain;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
+}
+.navbar-version {
+  font-size: 15px;
+  color: #ccc;
+  margin-left: 20px;
+}
+
+/* ==========================================================================
 JHipster Default Style
 ========================================================================== */
 
-.navbar-version {
-  font-size: 10px;
-  color: #ccc;
+.login {
+  font-size: 15px;
+  margin-left: 3px;
 }
 
 .jh-navbar {
   padding: 0.01em 1em;
+  display: inline;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
   .profile-image {
-    margin: -10px 0px;
+    margin: 0 0;
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    background: #ffffff;
+    border: solid 2px #bcc3cc;
   }
   .dropdown-item.active,
   .dropdown-item.active:focus,
   .dropdown-item.active:hover {
-    background-color: nb-theme(menu-active-bg);
-    color: #7bff24;
+    background-color: nb-theme(menu-bg);
+    color: nb-theme(color-success);
     min-width: 140px;
     font-weight: nb-theme(menu-active-font-weight);
   }
@@ -155,7 +302,7 @@ JHipster Default Style
     font-weight: nb-theme(menu-font-weight);
     background: nb-theme(menu-bg);
     color: nb-theme(menu-fg);
-    min-width: 140px;
+    min-width: 120px;
     padding: nb-theme(menu-item-padding);
 
     a {
@@ -165,28 +312,92 @@ JHipster Default Style
   }
 
   .dropdown-menu {
-    margin-top: 80px;
+    box-sizing: border-box;
+    outline-color: #0f6ab4;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: nb-theme(btn-border-radius);
     border-bottom-right-radius: nb-theme(btn-border-radius);
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    list-style-type: none;
+    margin-top: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
     border: none;
     width: 100%;
-    color: nb-theme(btn-fg);
-    padding: 0.75rem 0;
+    background-color: white;
+    color: black;
+    padding: 0.5rem 0;
     min-width: 140px;
+
+    .propic {
+      margin-top: 25px;
+      color: #000088;
+    }
+  }
+
+  .propic {
+    margin-top: 5px;
+    color: #000088;
+  }
+
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: #000088;
+  }
+
+  .arrow {
+    border-left: solid transparent;
+    border-right: solid transparent;
+    color: #000088;
+
+    &::after {
+      position: absolute;
+      content: ' ';
+      width: 0;
+      height: 0;
+      top: 23px;
+      left: 15px;
+      border-left: solid transparent;
+      border-right: solid transparent;
+    }
   }
 
   .dropdown-item {
-    color: inherit;
+    color: black;
+    background-color: white;
     padding: 0.75rem 1.5rem;
     text-transform: uppercase;
     font-size: 0.875rem;
     cursor: default;
     margin-top: -2px;
     &:hover {
-      background-color: nb-theme(btn-secondary-border);
+      background-color: nb-theme(color-success);
+      color: white;
+      min-width: 140px;
+      font-weight: nb-theme(menu-active-font-weight);
     }
+  }
+
+  .nb-location {
+    color: #0f6ab4;
+  }
+
+  .control-item .profile-pic {
+    font-size: nb-theme(menu-icon-font-size);
+    width: nb-theme(menu-icon-font-size);
+    //margin: nb-theme(menu-icon-margin);
+    margin-top: 16px;
+    text-align: center;
+    color: nb-theme(menu-icon-color);
   }
 
   .control-item {
@@ -195,6 +406,10 @@ JHipster Default Style
     margin: nb-theme(menu-icon-margin);
     text-align: center;
     color: nb-theme(menu-icon-color);
+  }
+
+  .dropdown-toggle {
+    color: transparent;
   }
 
   .dropdown-toggle::after {
@@ -237,24 +452,54 @@ JHipster Default Style
 }
 
 /* ==========================================================================
-Logo styles
+Menu styles
 ========================================================================== */
-.navbar-brand {
-  &.logo {
-    padding: 350px 25px;
-    .logo-img {
-      height: 45px;
-      width: 70px;
-      display: inline-block;
-      vertical-align: middle;
-      background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
-      background-size: contain;
-      font-size: 1.75rem;
-      font-weight: nb-theme(font-weight-bolder);
+
+:host ::ng-deep nb-menu {
+  display: inline;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+
+  nb-context-menu {
+    margin: 20px;
+  }
+
+  ul.menu-items {
+    margin: 20px;
+    padding: 0.5rem 0;
+
+    .menu-item {
+      border: none;
       white-space: nowrap;
 
-      span {
-        font-weight: nb-theme(font-weight-normal);
+      &:first-child {
+        border: none;
+      }
+
+      a {
+        cursor: pointer;
+        border-radius: 0;
+        padding: 0;
+
+        .menu-icon {
+          font-size: 1.5rem;
+          width: auto;
+        }
+
+        .menu-title {
+          padding: 0.375rem 3rem;
+          @include nb-rtl(text-align, right);
+        }
+
+        .menu-icon ~ .menu-title {
+          @include nb-ltr(padding-left, 0);
+          @include nb-rtl(padding-right, 0);
+        }
+
+        .menu-icon:first-child {
+          @include nb-ltr(padding-left, 1rem);
+          @include nb-rtl(padding-right, 1rem);
+        }
       }
     }
   }

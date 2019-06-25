@@ -23,10 +23,12 @@ import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
+import { NgxEchartsModule } from 'ngx-echarts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DragulaModule } from 'ng2-dragula';
 import { CoreModule } from './shared';
+import { NbAuthModule } from '@nebular/auth';
 
 @NgModule({
   imports: [
@@ -48,11 +50,13 @@ import { CoreModule } from './shared';
     BlackshieldSharedModule.forRoot(),
     BlackshieldCoreModule,
     BlackshieldHomeModule,
+    NgxEchartsModule,
     BlackshieldAccountModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     BlackshieldEntityModule,
     BlackshieldAppRoutingModule,
-    ThemeModulex
+    ThemeModulex,
+    NbAuthModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   providers: [
