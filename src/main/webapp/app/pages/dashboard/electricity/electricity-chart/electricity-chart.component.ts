@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../shared/@core/utils';
 import { ElectricityChart } from '../../../../shared/@core/data/electricity';
+import * as echarts from 'echarts/dist/echarts.js';
 
 @Component({
   selector: 'ngx-electricity-chart',
