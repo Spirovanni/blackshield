@@ -21,5 +21,6 @@
     "allowJs": true
   },
   "include": ["src/main/webapp/app", "src/test/javascript/"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["src/main/webapp/app/typings.d.ts"]
 }
