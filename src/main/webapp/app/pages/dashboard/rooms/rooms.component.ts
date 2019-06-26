@@ -14,7 +14,7 @@ import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService } from '@n
 })
 export class RoomsComponent implements OnDestroy {
   @HostBinding('class.expanded')
-  private expanded: boolean;
+  public expanded: boolean;
   private selected: number;
 
   breakpoint: NbMediaBreakpoint;
