@@ -8,32 +8,6 @@ const VIEW_BOX_SIZE = 300;
   styleUrls: ['./temperature-dragger.component.scss']
 })
 export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
-  off = false;
-  oldValue: number;
-
-  svgControlId = new Date().getTime();
-  scaleFactor = 1;
-  bottomAngleRad = 0;
-  radius = 100;
-  translateXValue = 0;
-  translateYValue = 0;
-  thickness = 6;
-  pinRadius = 10;
-  colors: any = [];
-
-  styles = {
-    viewBox: '0 0 300 300',
-    arcTranslateStr: 'translate(0, 0)',
-    clipPathStr: '',
-    gradArcs: [],
-    nonSelectedArc: {},
-    thumbPosition: { x: 0, y: 0 },
-    blurRadius: 15
-  };
-
-  private isMouseDown = false;
-  private init = false;
-
   @ViewChild('svgRoot') svgRoot: ElementRef;
 
   @Input() fillColors: string | string[] = '#2ec6ff';
@@ -71,6 +45,32 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   onResize(event) {
     this.invalidate();
   }
+
+  off = false;
+  oldValue: number;
+
+  svgControlId = new Date().getTime();
+  scaleFactor = 1;
+  bottomAngleRad = 0;
+  radius = 100;
+  translateXValue = 0;
+  translateYValue = 0;
+  thickness = 6;
+  pinRadius = 10;
+  colors: any = [];
+
+  styles = {
+    viewBox: '0 0 300 300',
+    arcTranslateStr: 'translate(0, 0)',
+    clipPathStr: '',
+    gradArcs: [],
+    nonSelectedArc: {},
+    thumbPosition: { x: 0, y: 0 },
+    blurRadius: 15
+  };
+
+  private isMouseDown = false;
+  private init = false;
 
   constructor() {
     this.oldValue = this.value;
@@ -335,15 +335,15 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  private static toRad(angle) {
-    return (Math.PI * angle) / 180;
-  }
-
   private getValuePercentage() {
     return (this.value - this.min) / (this.max - this.min);
   }
 
   private toValueNumber(factor) {
     return Math.round((factor * (this.max - this.min)) / this.step) * this.step + this.min;
+  }
+
+  private static toRad(angle) {
+    return (Math.PI * angle) / 180;
   }
 }

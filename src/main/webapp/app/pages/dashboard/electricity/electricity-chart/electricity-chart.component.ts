@@ -19,6 +19,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 
   option: any;
   echartsInstance: any;
+  echarts: any;
 
   constructor(private theme: NbThemeService, private layoutService: LayoutService) {
     this.layoutService
