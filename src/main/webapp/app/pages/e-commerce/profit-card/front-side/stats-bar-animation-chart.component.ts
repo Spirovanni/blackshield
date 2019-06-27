@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../shared/@core/utils/layout.service';
+import * as echarts from 'echarts/dist/echarts.js';
 
 @Component({
   selector: 'ngx-stats-bar-animation-chart',
@@ -17,8 +18,9 @@ export class StatsBarAnimationChartComponent implements AfterViewInit, OnDestroy
     secondLine: []
   };
 
-  echartsIntance: any;
+  echartsInstance: any;
   options: any = {};
+  echarts: any;
 
   constructor(private theme: NbThemeService, private layoutService: LayoutService) {
     this.layoutService
@@ -129,12 +131,12 @@ export class StatsBarAnimationChartComponent implements AfterViewInit, OnDestroy
   }
 
   onChartInit(echarts) {
-    this.echartsIntance = echarts;
+    this.echartsInstance = echarts;
   }
 
   resizeChart() {
-    if (this.echartsIntance) {
-      this.echartsIntance.resize();
+    if (this.echartsInstance) {
+      this.echartsInstance.resize();
     }
   }
 
