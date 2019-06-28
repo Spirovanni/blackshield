@@ -12,3 +12,10 @@ export class SlideOutComponent {
     this.showVisitorsStatistics = !this.showVisitorsStatistics;
   }
 }
+
+// private alive = true;
+//
+// @Input() linesData: { firstLine: number[]; secondLine: number[] } = {
+//   firstLine: [],
+//   secondLine: []
+// };
