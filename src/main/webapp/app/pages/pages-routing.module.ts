@@ -27,10 +27,10 @@ const routes: Routes = [
       //   path: 'modal-overlays',
       //   loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule'
       // },
-      // {
-      //   path: 'extra-components',
-      //   loadChildren: './extra-components/extra-components.module#ExtraComponentsModule'
-      // },
+      {
+        path: 'extra-components',
+        loadChildren: './extra-components/extra-components.module#ExtraComponentsModule'
+      },
       // {
       //   path: 'bootstrap',
       //   loadChildren: './bootstrap/bootstrap.module#BootstrapModule'

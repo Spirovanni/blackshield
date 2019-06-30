@@ -1,0 +1,11 @@
+@import '../../../../content/scss/theme/themes';
+
+@include nb-install-component() {
+  .infinite-cards {
+    nb-card {
+      &.own-scroll {
+        height: 50vh;
+      }
+    }
+  }
+}
