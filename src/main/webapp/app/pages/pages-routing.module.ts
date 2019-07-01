@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
+// import { ExtraComponentsComponent } from './extra-components/extra-components.component';
 // import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [
@@ -27,10 +28,10 @@ const routes: Routes = [
       //   path: 'modal-overlays',
       //   loadChildren: './modal-overlays/modal-overlays.module#ModalOverlaysModule'
       // },
-      // {
-      //   path: 'extra-components',
-      //   loadChildren: './extra-components/extra-components.module#ExtraComponentsModule'
-      // },
+      {
+        path: 'extra-components',
+        loadChildren: './extra-components/extra-components.module#ExtraComponentModule'
+      },
       // {
       //   path: 'bootstrap',
       //   loadChildren: './bootstrap/bootstrap.module#BootstrapModule'

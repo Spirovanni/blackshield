@@ -5,8 +5,8 @@ $fa-font-path: '~font-awesome/fonts';
 put Sass variables here:
 eg $input-color: red;
 ****************************/
-// Override Boostrap variables
-@import '~bootswatch/dist/cyborg/variables';
+// themes - our custom or/and out of the box themes
+@import './theme/themes';
 // Import Bootstrap source files from node_modules
 @import '~bootstrap/scss/bootstrap';
 //@import '~bootswatch/dist/cyborg/bootswatch';
@@ -19,9 +19,6 @@ eg $input-color: red;
 @import '~@nebular/theme/styles/theming';
 // @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
-
-// themes - our custom or/and out of the box themes
-@import './theme/themes';
 
 // framework component themes (styles tied to theme variables)
 @import '~@nebular/theme/styles/globals';
