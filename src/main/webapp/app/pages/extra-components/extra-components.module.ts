@@ -22,7 +22,7 @@ import { ExtraComponentsComponent } from './extra-components.component';
 // import { ChatComponent } from './chat/chat.component';
 // import { Tab1Component, Tab2Component, TabsComponent } from './tabs/tabs.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { DayCellComponent } from './calendar/day-cell/day-cell.component';
+// import { DayCellComponent } from './calendar/day-cell/day-cell.component';
 // import { StepperComponent } from './stepper/stepper.component';
 // import { ListComponent } from './list/list.component';
 // import { InfiniteListComponent } from './infinite-list/infinite-list.component';
@@ -31,11 +31,11 @@ import { DayCellComponent } from './calendar/day-cell/day-cell.component';
 // import { AccordionComponent } from './accordion/accordion.component';
 // import { NebularFormInputsComponent } from './form-inputs/nebular-form-inputs.component';
 // import { NebularSelectComponent } from './form-inputs/nebular-select/nebular-select.component';
-import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
-import { CalendarKitMonthCellComponent } from './calendar-kit/month-cell/month-cell.component';
+// import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
+// import { CalendarKitMonthCellComponent } from './calendar-kit/month-cell/month-cell.component';
 
 // service
-import { NewsService } from './services/news.service';
+// import { NewsService } from './services/news.service';
 
 const COMPONENTS = [
   ExtraComponentsComponent,
@@ -48,8 +48,8 @@ const COMPONENTS = [
   // SpinnerSizesComponent,
   // SpinnerInButtonsComponent,
   // SpinnerInTabsComponent,
-  CalendarComponent,
-  DayCellComponent,
+  CalendarComponent
+  // DayCellComponent,
   // ChatComponent,
   // TabsComponent,
   // Tab1Component,
@@ -62,17 +62,17 @@ const COMPONENTS = [
   // AccordionComponent,
   // NebularFormInputsComponent,
   // NebularSelectComponent,
-  CalendarKitFullCalendarShowcaseComponent,
-  CalendarKitMonthCellComponent
+  // CalendarKitFullCalendarShowcaseComponent,
+  // CalendarKitMonthCellComponent
 ];
 
-const SERVICES = [NewsService];
+// const SERVICES = [NewsService];
 
 const MODULES = [ThemeModulex, ExtraComponentsRoutingModule, TreeModule, ToasterModule.forRoot()];
 
 @NgModule({
   imports: [...MODULES],
-  declarations: [...COMPONENTS],
-  providers: [...SERVICES]
+  declarations: [...COMPONENTS]
+  // providers: [...SERVICES]
 })
-export class ExtraComponentsModule {}
+export class ExtraComponentModule {}

@@ -14,7 +14,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 // import { InfiniteListComponent } from './infinite-list/infinite-list.component';
 // import { ListComponent } from './list/list.component';
 // import { StepperComponent } from './stepper/stepper.component';
-import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
+// import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path: 'calendar',
         component: CalendarComponent
-      },
+      }
       // {
       //   path: 'stepper',
       //   component: StepperComponent,
@@ -80,10 +80,10 @@ const routes: Routes = [
       //     },
       //   ],
       // },
-      {
-        path: 'calendar-kit',
-        component: CalendarKitFullCalendarShowcaseComponent
-      }
+      // {
+      //   path: 'calendar-kit',
+      //   component: CalendarKitFullCalendarShowcaseComponent
+      // },
       // {
       //   path: 'chat',
       //   component: ChatComponent,
