@@ -102,23 +102,21 @@ Navbar
   }
 
   @include nb-for-theme(cosmic) {
-    $menu-action-separator-color: #3f4550;
+    $menu-action-separator-color: #2439ff;
 
-    background-color: #323259;
+    background-color: #2d1e59;
     box-shadow: 0 0.5rem 1rem 0 #1a1f33;
 
+    nb-user .account-navigator {
+      color: white;
+    }
+
+    div .user-name {
+      color: whitesmoke;
+    }
+
     nb-action {
-      @include nb-ltr(border-left-color, $menu-action-separator-color);
-      @include nb-rtl(border-right-color, $menu-action-separator-color);
-    }
-
-    .header-container .logo {
-      @include nb-ltr(border, none);
-      @include nb-rtl(border, none);
-    }
-
-    .header-container ::ng-deep ngx-theme-switcher .dropdown-toggle {
-      //color: nb-theme(color-white);
+      color: whitesmoke;
     }
   }
 
