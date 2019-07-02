@@ -7,13 +7,13 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { AccountService, UserService, User } from 'app/core';
-import { UserMgmtDeleteDialogComponent } from './user-management-delete-dialog.component';
+import { OperationsDeleteDialogComponent } from './operations-delete-dialog.component';
 
 import { SmartTableData } from '../../shared/@core/data/smart-table';
 
 @Component({
-  selector: 'jhi-user-mgmt',
-  templateUrl: './user-management.component.html',
+  selector: 'jhi-operations',
+  templateUrl: './operations.component.html',
   styles: [
     `
       nb-card {
@@ -22,7 +22,7 @@ import { SmartTableData } from '../../shared/@core/data/smart-table';
     `
   ]
 })
-export class UserMgmtComponent implements OnInit, OnDestroy {
+export class OperationsComponent implements OnInit, OnDestroy {
   currentAccount: any;
   users: User[];
   error: any;
@@ -126,7 +126,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: User) {
-    const modalRef = this.modalService.open(UserMgmtDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    const modalRef = this.modalService.open(OperationsDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.user = user;
     modalRef.result.then(
       result => {

@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 import { BlackshieldSharedModule } from 'app/shared';
+import { ThemeModulex } from '../shared';
+import { AdminRoutingModule } from './admin-routing.module';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -17,12 +19,19 @@ import {
   JhiHealthModalComponent,
   JhiHealthCheckComponent,
   JhiConfigurationComponent,
-  JhiDocsComponent
+  JhiDocsComponent,
+  AdminComponent,
+  OperationsComponent,
+  OperationsDeleteDialogComponent,
+  OperationsDetailComponent,
+  OperationsUpdateComponent
 } from './';
 
 @NgModule({
   imports: [
     BlackshieldSharedModule,
+    AdminRoutingModule,
+    ThemeModulex,
     /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     RouterModule.forChild(adminState)
   ],
@@ -37,7 +46,12 @@ import {
     JhiHealthCheckComponent,
     JhiHealthModalComponent,
     JhiDocsComponent,
-    JhiMetricsMonitoringComponent
+    JhiMetricsMonitoringComponent,
+    AdminComponent,
+    OperationsComponent,
+    OperationsDeleteDialogComponent,
+    OperationsDetailComponent,
+    OperationsUpdateComponent
   ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent],

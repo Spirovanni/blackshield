@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { TreeModule } from 'angular-tree-component';
-import { ToasterModule } from 'angular2-toaster';
+// import { TreeModule } from 'angular-tree-component';
+// import { ToasterModule } from 'angular2-toaster';
 
 import { ThemeModulex } from '../../shared/@theme/theme-modulex.module';
 import { ExtraComponentsRoutingModule } from './extra-components-routing.module';
@@ -68,7 +68,7 @@ const COMPONENTS = [
 
 // const SERVICES = [NewsService];
 
-const MODULES = [ThemeModulex, ExtraComponentsRoutingModule, TreeModule, ToasterModule.forRoot()];
+const MODULES = [ThemeModulex, ExtraComponentsRoutingModule];
 
 @NgModule({
   imports: [...MODULES],

@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit {
     // { title: 'Users', url: '/admin/user-management/admin/edit', icon: 'fa fa-fw fa-dashboard' },
     { title: 'Settings', link: 'settings', icon: 'fa fa-fw fa-wrench' },
     { title: 'Password', link: 'password', icon: 'fa fa-fw fa-clock-o' },
-    { title: 'Register', link: 'register', icon: 'fa fa-fw fa-user-plus' }
+    { title: 'Register', link: 'register', icon: 'fa fa-fw fa-user-plus' },
+    { title: 'Admin', link: 'admin/user-management', icon: 'fa fa-fw fa-folder' }
   ];
 
   items = [{ title: 'Profile' }, { title: 'Logout' }];

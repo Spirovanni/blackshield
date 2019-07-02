@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard'
   },
   {
+    title: 'Admin',
+    icon: 'nb-locked',
+    link: '/admin/user-management'
+  },
+  {
     title: 'FEATURES',
     group: true
   },

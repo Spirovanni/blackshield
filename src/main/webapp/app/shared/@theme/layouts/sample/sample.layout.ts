@@ -33,6 +33,7 @@ import { StateService } from '../../../@core/utils';
       </nb-layout-footer>
       <nb-sidebar class="settings-sidebar" tag="settings-sidebar" state="collapsed" fixed [end]="sidebar.id !== 'end'">
         <ngx-theme-settings></ngx-theme-settings>
+        <ngx-theme-switcher-list></ngx-theme-switcher-list>
       </nb-sidebar>
     </nb-layout>
     <ngx-toggle-settings-button></ngx-toggle-settings-button>
