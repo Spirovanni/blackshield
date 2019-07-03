@@ -1,4 +1,39 @@
 import { NbMenuItem } from '@nebular/theme';
+import { UserRouteAccessService } from 'app/core';
+import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
+
+import { AccountService, User, UserService } from 'app/core';
+
+import { AdminComponent } from './admin.component';
+import { UserMgmtComponent } from './user-management/user-management.component';
+import { UserMgmtDetailComponent } from 'app/admin/user-management/user-management-detail.component';
+import { UserMgmtUpdateComponent } from 'app/admin/user-management/user-management-update.component';
+import { OperationsComponent } from './operations/operations.component';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Resolve, RouterStateSnapshot } from '@angular/router';
+import { UserMgmtResolve } from 'app/admin/user-management/user-management.route';
+
+@Injectable({ providedIn: 'root' })
+export class UzerResolve implements CanActivate {
+  constructor(private accountService: AccountService) {}
+
+  canActivate() {
+    return this.accountService.identity().then(account => this.accountService.hasAnyAuthority(['ROLE_ADMIN']));
+  }
+}
+
+@Injectable({ providedIn: 'root' })
+export class UserMmtResolve implements Resolve<any> {
+  constructor(private service: UserService) {}
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const id = route.params['login'] ? route.params['login'] : null;
+    if (id) {
+      return this.service.find(id);
+    }
+    return new User();
+  }
+}
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
@@ -32,14 +67,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Create New User',
         link: '/admin/user-management/new'
+      }
+    ]
+  },
+  {
+    title: 'Systems Management',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: 'Metrics',
+        link: '/admin/jhi-metrics'
       },
       {
-        title: 'User Details',
-        link: '/admin/user-management/admin/view'
-      },
-      {
-        title: 'Edit User',
-        link: '/admin/user-management/admin/edit'
+        title: 'Create New User',
+        link: '/admin/user-management/new'
       }
     ]
   }

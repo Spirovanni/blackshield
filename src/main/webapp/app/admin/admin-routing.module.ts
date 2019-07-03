@@ -11,6 +11,7 @@ import { UserMgmtComponent } from './user-management/user-management.component';
 import { UserMgmtDetailComponent } from 'app/admin/user-management/user-management-detail.component';
 import { UserMgmtUpdateComponent } from 'app/admin/user-management/user-management-update.component';
 import { OperationsComponent } from './operations/operations.component';
+import { JhiMetricsMonitoringComponent } from 'app/admin/metrics/metrics.component';
 
 // import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
@@ -71,6 +72,9 @@ const routes: Routes = [
         component: UserMgmtUpdateComponent,
         resolve: {
           user: UserMgmtResolve
+        },
+        data: {
+          pageTitle: 'userManagement.home.createLabel'
         }
       },
       {
@@ -78,6 +82,9 @@ const routes: Routes = [
         component: UserMgmtUpdateComponent,
         resolve: {
           user: UserMgmtResolve
+        },
+        data: {
+          pageTitle: 'userManagement.home.createOrEditLabel'
         }
       },
       {
@@ -85,6 +92,13 @@ const routes: Routes = [
         component: OperationsComponent,
         resolve: {
           user: UserMgmtResolve
+        }
+      },
+      {
+        path: 'jhi-metrics',
+        component: JhiMetricsMonitoringComponent,
+        data: {
+          pageTitle: 'metrics.title'
         }
       },
       // {
