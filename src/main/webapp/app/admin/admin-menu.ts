@@ -79,8 +79,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/admin/jhi-metrics'
       },
       {
-        title: 'Create New User',
-        link: '/admin/user-management/new'
+        title: 'Logs',
+        link: '/admin/logs'
+      },
+      {
+        title: 'Health',
+        link: '/admin/jhi-health'
+      },
+      {
+        title: 'Docs',
+        link: '/admin/docs'
+      },
+      {
+        title: 'Configuration',
+        link: '/admin/jhi-configuration'
       }
     ]
   }
