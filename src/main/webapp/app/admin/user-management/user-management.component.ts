@@ -9,18 +9,14 @@ import { ITEMS_PER_PAGE } from 'app/shared';
 import { AccountService, UserService, User } from 'app/core';
 import { UserMgmtDeleteDialogComponent } from './user-management-delete-dialog.component';
 
+import { LocalDataSource } from 'ng2-smart-table';
+
 import { SmartTableData } from '../../shared/@core/data/smart-table';
 
 @Component({
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
-  styles: [
-    `
-      nb-card {
-        transform: translate3d(0, 0, 0);
-      }
-    `
-  ]
+  styleUrls: ['./user-management.component.scss']
 })
 export class UserMgmtComponent implements OnInit, OnDestroy {
   currentAccount: any;
@@ -36,6 +32,51 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   previousPage: any;
   reverse: any;
 
+  settings = {
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>'
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>'
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true
+    },
+    columns: {
+      id: {
+        title: 'ID',
+        type: 'number'
+      },
+      firstName: {
+        title: 'First Name',
+        type: 'string'
+      },
+      lastName: {
+        title: 'Last Name',
+        type: 'string'
+      },
+      username: {
+        title: 'Username',
+        type: 'string'
+      },
+      email: {
+        title: 'E-mail',
+        type: 'string'
+      },
+      age: {
+        title: 'Age',
+        type: 'number'
+      }
+    }
+  };
+
+  source: LocalDataSource = new LocalDataSource();
+
   constructor(
     private userService: UserService,
     private alertService: JhiAlertService,
@@ -44,7 +85,8 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private eventManager: JhiEventManager,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private service: SmartTableData
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -53,6 +95,8 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
       this.reverse = data['pagingParams'].ascending;
       this.predicate = data['pagingParams'].predicate;
     });
+    const data = this.service.getData();
+    this.source.load(data);
   }
 
   ngOnInit() {

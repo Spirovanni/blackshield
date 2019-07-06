@@ -70,3 +70,12 @@ nb-card.inline-form-card nb-card-body {
     }
   }
 }
+
+button {
+  height: 25px;
+}
+
+.btn.btn-sm,
+.nb-theme-cosmic .btn-group-sm > .btn {
+  padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+}

@@ -3,8 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Log } from './log.model';
 import { LogsService } from './logs.service';
 
+import { LocalDataSource } from 'ng2-smart-table';
+
 @Component({
   selector: 'jhi-logs',
+  styleUrls: ['./logs.component.scss'],
   templateUrl: './logs.component.html'
 })
 export class LogsComponent implements OnInit {

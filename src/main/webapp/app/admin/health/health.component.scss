@@ -1,5 +1,22 @@
 @import '../../../content/scss/theme/themes';
 
+.text-center {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 2rem 13rem 3rem 1rem;
+}
+
+.health-card {
+  width: 80%;
+}
+
+th {
+  padding: 0 13rem 0 10rem;
+}
+
+td {
+  padding: 0 0 0 2rem;
+}
+
 nb-checkbox {
   margin-bottom: 1rem;
 }

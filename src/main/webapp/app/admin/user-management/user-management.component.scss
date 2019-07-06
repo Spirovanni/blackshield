@@ -70,3 +70,16 @@ nb-card.inline-form-card nb-card-body {
     }
   }
 }
+
+nb-card {
+  transform: translate3d(0, 0, 0);
+}
+
+button {
+  height: 25px;
+}
+
+.btn.btn-sm,
+.nb-theme-cosmic .btn-group-sm > .btn {
+  padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+}

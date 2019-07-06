@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { JhiConfigurationService } from './configuration.service';
 
+import { LocalDataSource } from 'ng2-smart-table';
+
 @Component({
   selector: 'jhi-configuration',
+  styleUrls: ['./configuration.component.scss'],
   templateUrl: './configuration.component.html'
 })
 export class JhiConfigurationComponent implements OnInit {
