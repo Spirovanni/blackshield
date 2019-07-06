@@ -7,7 +7,9 @@ import { MENU_ITEMS } from './admin-menu';
   styleUrls: ['admin.component.scss'],
   template: `
     <ngx-sample-layout>
-      <nb-menu [items]="menu"></nb-menu>
+      <nb-menu [items]="menu">
+        <h1>Let's Roll!</h1>
+      </nb-menu>
       <router-outlet></router-outlet>
     </ngx-sample-layout>
   `

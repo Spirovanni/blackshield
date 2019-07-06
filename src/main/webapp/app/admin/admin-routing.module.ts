@@ -8,9 +8,15 @@ import { AccountService, User, UserService } from 'app/core';
 
 import { AdminComponent } from './admin.component';
 import { UserMgmtComponent } from './user-management/user-management.component';
-import { UserMgmtDetailComponent } from 'app/admin/user-management/user-management-detail.component';
-import { UserMgmtUpdateComponent } from 'app/admin/user-management/user-management-update.component';
+import { UserMgmtDetailComponent } from './user-management/user-management-detail.component';
+import { UserMgmtUpdateComponent } from './user-management/user-management-update.component';
 import { OperationsComponent } from './operations/operations.component';
+import { JhiMetricsMonitoringComponent } from './metrics/metrics.component';
+import { LogsComponent } from './logs/logs.component';
+import { JhiHealthCheckComponent } from './health/health.component';
+import { JhiDocsComponent } from './docs/docs.component';
+import { JhiConfigurationComponent } from './configuration/configuration.component';
+import { AuditsComponent } from './audits/audits.component';
 
 // import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
@@ -71,6 +77,9 @@ const routes: Routes = [
         component: UserMgmtUpdateComponent,
         resolve: {
           user: UserMgmtResolve
+        },
+        data: {
+          pageTitle: 'userManagement.home.createLabel'
         }
       },
       {
@@ -78,6 +87,9 @@ const routes: Routes = [
         component: UserMgmtUpdateComponent,
         resolve: {
           user: UserMgmtResolve
+        },
+        data: {
+          pageTitle: 'userManagement.home.createOrEditLabel'
         }
       },
       {
@@ -85,6 +97,52 @@ const routes: Routes = [
         component: OperationsComponent,
         resolve: {
           user: UserMgmtResolve
+        }
+      },
+      {
+        path: 'jhi-metrics',
+        component: JhiMetricsMonitoringComponent,
+        data: {
+          pageTitle: 'metrics.title'
+        }
+      },
+      {
+        path: 'logs',
+        component: LogsComponent,
+        data: {
+          pageTitle: 'logs.title'
+        }
+      },
+      {
+        path: 'jhi-health',
+        component: JhiHealthCheckComponent,
+        data: {
+          pageTitle: 'health.title'
+        }
+      },
+      {
+        path: 'docs',
+        component: JhiDocsComponent,
+        data: {
+          pageTitle: 'global.menu.admin.apidocs'
+        }
+      },
+      {
+        path: 'jhi-configuration',
+        component: JhiConfigurationComponent,
+        data: {
+          pageTitle: 'configuration.title'
+        }
+      },
+      {
+        path: 'audits',
+        component: AuditsComponent,
+        resolve: {
+          pagingParams: JhiResolvePagingParams
+        },
+        data: {
+          pageTitle: 'audits.title',
+          defaultSort: 'auditEventDate,desc'
         }
       },
       // {

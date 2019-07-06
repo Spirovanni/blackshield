@@ -1,40 +1,110 @@
-<div>
-    <h2>
-        <span id="metrics-page-heading" jhiTranslate="metrics.title">Application Metrics</span>
-        <button class="btn btn-primary float-right" (click)="refresh()">
-            <fa-icon [icon]="'sync'"></fa-icon> <span jhiTranslate="metrics.refresh.button">Refresh</span>
-        </button>
-    </h2>
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>
+                <h2>
+                    <span id="metrics-page-heading" jhiTranslate="metrics.title">Application Metrics</span>
+                    <button class="btn btn-primary float-right" (click)="refresh()">
+                        <fa-icon [icon]="'sync'"></fa-icon> <span jhiTranslate="metrics.refresh.button">Refresh</span>
+                    </button>
+                </h2>
+            </nb-card-header>
+        </nb-card>
+    </div>
+</div>
 
-    <h3 jhiTranslate="metrics.jvm.title">JVM Metrics</h3>
-    <div class="row" *ngIf="!updatingMetrics">
-        <jhi-jvm-memory
-            class="col-md-4"
-            [updating]="updatingMetrics"
-            [jvmMemoryMetrics]="metrics.jvm">
-        </jhi-jvm-memory>
-        <jhi-jvm-threads class="col-md-4" [threadData]="threadData"></jhi-jvm-threads>
-        <jhi-metrics-system
-            class="col-md-4"
-            [updating]="updatingMetrics"
-            [systemMetrics]="metrics.processMetrics">
-        </jhi-metrics-system>
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>
+                <h3 jhiTranslate="metrics.jvm.title">JVM Metrics</h3>
+            </nb-card-header>
+        </nb-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <nb-card *ngIf="!updatingMetrics">
+            <nb-card-body>
+                <jhi-jvm-memory
+                    class="col-md-4"
+                    [updating]="updatingMetrics"
+                    [jvmMemoryMetrics]="metrics.jvm">
+                </jhi-jvm-memory>
+            </nb-card-body>
+        </nb-card>
     </div>
 
-    <div *ngIf="isObjectExisting(metrics, 'garbageCollector')">
-        <h3 jhiTranslate="metrics.jvm.gc.title">Garbage collector statistics</h3>
-        <jhi-metrics-garbagecollector [updating]="updatingMetrics" [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
+    <div class="col-md-4">
+        <nb-card>
+            <nb-card-body>
+                <jhi-jvm-threads class="col-md-4" [threadData]="threadData"></jhi-jvm-threads>
+            </nb-card-body>
+        </nb-card>
     </div>
+    <div class="col-md-4">
+        <nb-card>
+            <nb-card-body>
+                        <jhi-metrics-system
+                            class="col-md-4"
+                            [updating]="updatingMetrics"
+                            [systemMetrics]="metrics.processMetrics">
+                        </jhi-metrics-system>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<!--            <div class="col-md-4">-->
+
+<!--                    <nb-card>-->
+<!--                        <jhi-jvm-threads class="col-md-4" [threadData]="threadData"></jhi-jvm-threads>-->
+<!--                    </nb-card>-->
+
+<!--            </div>-->
+
+<!--            <div class="col-md-4">-->
+
+<!--                    <nb-card>-->
+<!--                        <jhi-metrics-system-->
+<!--                            class="col-md-4"-->
+<!--                            [updating]="updatingMetrics"-->
+<!--                            [systemMetrics]="metrics.processMetrics">-->
+<!--                        </jhi-metrics-system>-->
+<!--                    </nb-card>-->
+
+<!--            </div>-->
+
+
+<div class="row">
+    <div class="col-md-12" *ngIf="isObjectExisting(metrics, 'garbageCollector')">
+        <nb-card class="inline-form-card">
+            <nb-card-header>
+                <h3 jhiTranslate="metrics.jvm.gc.title">Garbage collector statistics</h3>
+            </nb-card-header>
+            <nb-card-body>
+                <jhi-metrics-garbagecollector [updating]="updatingMetrics" [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
 
     <div class="well well-lg" *ngIf="updatingMetrics" jhiTranslate="metrics.updating">Updating...</div>
 
-    <jhi-metrics-request
-        *ngIf="isObjectExisting(metrics, 'http.server.requests')"
-        [updating]="updatingMetrics"
-        [requestMetrics]="metrics['http.server.requests']">
-    </jhi-metrics-request>
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-body>
+                <jhi-metrics-request
+                    *ngIf="isObjectExisting(metrics, 'http.server.requests')"
+                    [updating]="updatingMetrics"
+                    [requestMetrics]="metrics['http.server.requests']">
+                </jhi-metrics-request>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
 
-    <div >
         <jhi-metrics-endpoints-requests
             *ngIf="isObjectExisting(metrics, 'services')"
             [updating]="updatingMetrics"
@@ -53,4 +123,4 @@
         [datasourceMetrics]="metrics.databases">
     </jhi-metrics-datasource>
 
-</div>
+
