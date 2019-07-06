@@ -4,8 +4,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiHealthService } from './health.service';
 import { JhiHealthModalComponent } from './health-modal.component';
 
-import { LocalDataSource } from 'ng2-smart-table';
-
 @Component({
   selector: 'jhi-health',
   styleUrls: ['./health.component.scss'],

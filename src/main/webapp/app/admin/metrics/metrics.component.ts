@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LocalDataSource } from 'ng2-smart-table';
 
 import { JhiMetricsService } from './metrics.service';
 

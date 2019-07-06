@@ -9,10 +9,6 @@ import { ITEMS_PER_PAGE } from 'app/shared';
 import { AccountService, UserService, User } from 'app/core';
 import { UserMgmtDeleteDialogComponent } from './user-management-delete-dialog.component';
 
-import { LocalDataSource } from 'ng2-smart-table';
-
-import { SmartTableData } from '../../shared/@core/data/smart-table';
-
 @Component({
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
