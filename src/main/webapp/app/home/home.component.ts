@@ -12,7 +12,7 @@ import { StateService } from '../shared/@core/utils';
 @Component({
   selector: 'jhi-home',
   templateUrl: './home.component.html',
-  styleUrls: ['home.scss']
+  styleUrls: ['./home.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account;
@@ -111,6 +111,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // Responsiveness to questionnaire from js
+    $.getScript('../../../content/js/animations/header.js');
+
     this.accountService.identity().then((account: Account) => {
       this.account = account;
     });

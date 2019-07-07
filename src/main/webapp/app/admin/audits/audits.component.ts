@@ -10,6 +10,7 @@ import { AuditsService } from './audits.service';
 
 @Component({
   selector: 'jhi-audit',
+  styleUrls: ['./audits.component.scss'],
   templateUrl: './audits.component.html'
 })
 export class AuditsComponent implements OnInit, OnDestroy {

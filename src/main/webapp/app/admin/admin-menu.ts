@@ -93,6 +93,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Configuration',
         link: '/admin/jhi-configuration'
+      },
+      {
+        title: 'Audits',
+        link: '/admin/audits'
       }
     ]
   }
