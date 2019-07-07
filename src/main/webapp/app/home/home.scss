@@ -1,4 +1,5 @@
 @import '../../content/scss/theme/themes';
+@import '../../content/scss/new-age';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 
@@ -202,4 +203,14 @@ Main page styles
 
 nb-layout-footer {
   height: 120px;
+}
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+nb-layout-column {
+  margin-left: -32px;
+  margin-top: -32px;
+  margin-right: -32px;
 }
