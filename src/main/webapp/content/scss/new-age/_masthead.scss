@@ -17,11 +17,11 @@ header.masthead {
 
     text-align: center;
     h1 {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
   .device-container {
-    max-width: 325px;
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
     .screen img {
@@ -30,7 +30,7 @@ header.masthead {
   }
   @media (min-width: 992px) {
     height: 100vh;
-    min-height: 775px;
+    min-height: 600px;
     padding-top: 0;
     padding-bottom: 0;
     .header-content {
@@ -42,7 +42,7 @@ header.masthead {
       }
     }
     .device-container {
-      max-width: 300px;
+      max-width: 85%;
     }
   }
 }

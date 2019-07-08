@@ -18,6 +18,10 @@ Navbar
   //  margin-right: 10px;
   //}
 
+  .nb-theme-cosmic nb-search button {
+    color: #00b0ff;
+  }
+
   .account-navigator {
     margin-right: 35px;
   }
@@ -143,6 +147,10 @@ Navbar
 
   @include nb-for-theme(cosmic) {
     $menu-action-separator-color: #2439ff;
+
+    button {
+      color: #00b0ff;
+    }
 
     .navbar-brand {
       &.logo {

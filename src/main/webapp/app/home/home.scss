@@ -211,20 +211,16 @@ Main page styles
 
 .masthead {
   margin-left: -32px;
-  margin-top: -42px;
+  margin-top: -62px;
   margin-right: -34px;
   max-width: 150%;
 }
 
 .hero .img-fluid {
-  max-width: 210%;
+  //margin-top: -22px;
+  //padding-right: -15px;
+  max-width: 100%;
+  min-width: 100%;
+  width: 90%;
   height: auto;
-}
-
-h1 .mb-5 {
-  margin-left: -60px;
-}
-
-.header-content {
-  width: 1300px;
 }
