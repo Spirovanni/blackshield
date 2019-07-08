@@ -79,12 +79,14 @@
 <div class="row">
     <div class="col-md-12" *ngIf="isObjectExisting(metrics, 'garbageCollector')">
         <nb-card class="inline-form-card">
-            <nb-card-header>
-                <h3 jhiTranslate="metrics.jvm.gc.title">Garbage collector statistics</h3>
-            </nb-card-header>
-            <nb-card-body>
-                <jhi-metrics-garbagecollector [updating]="updatingMetrics" [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
-            </nb-card-body>
+                <nb-card-header>
+                    <h3 jhiTranslate="metrics.jvm.gc.title">Garbage collector statistics</h3>
+                </nb-card-header>
+                <nb-card-body>
+                    <ng2-smart-table>
+                        <jhi-metrics-garbagecollector [updating]="updatingMetrics" [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
+                    </ng2-smart-table>
+                </nb-card-body>
         </nb-card>
     </div>
 </div>
@@ -95,32 +97,62 @@
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-body>
-                <jhi-metrics-request
-                    *ngIf="isObjectExisting(metrics, 'http.server.requests')"
-                    [updating]="updatingMetrics"
-                    [requestMetrics]="metrics['http.server.requests']">
-                </jhi-metrics-request>
+                <ng2-smart-table>
+                    <jhi-metrics-request
+                        *ngIf="isObjectExisting(metrics, 'http.server.requests')"
+                        [updating]="updatingMetrics"
+                        [requestMetrics]="metrics['http.server.requests']">
+                    </jhi-metrics-request>
+                </ng2-smart-table>
             </nb-card-body>
         </nb-card>
     </div>
 </div>
 
-        <jhi-metrics-endpoints-requests
-            *ngIf="isObjectExisting(metrics, 'services')"
-            [updating]="updatingMetrics"
-            [endpointsRequestsMetrics]="metrics.services">
-        </jhi-metrics-endpoints-requests>
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-body>
+                <ng2-smart-table>
+                    <jhi-metrics-endpoints-requests
+                        *ngIf="isObjectExisting(metrics, 'services')"
+                        [updating]="updatingMetrics"
+                        [endpointsRequestsMetrics]="metrics.services">
+                    </jhi-metrics-endpoints-requests>
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
 
-    <jhi-metrics-cache
-        *ngIf="isObjectExisting(metrics, 'cache')"
-        [updating]="updatingMetrics"
-        [cacheMetrics]="metrics.cache">
-    </jhi-metrics-cache>
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-body>
+                <ng2-smart-table>
+                    <jhi-metrics-cache
+                        *ngIf="isObjectExisting(metrics, 'cache')"
+                        [updating]="updatingMetrics"
+                        [cacheMetrics]="metrics.cache">
+                    </jhi-metrics-cache>
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
 
-    <jhi-metrics-datasource
-        *ngIf="isObjectExistingAndNotEmpty(metrics, 'databases')"
-        [updating]="updatingMetrics"
-        [datasourceMetrics]="metrics.databases">
-    </jhi-metrics-datasource>
-
-
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-body>
+                <ng2-smart-table>
+                    <jhi-metrics-datasource
+                        *ngIf="isObjectExistingAndNotEmpty(metrics, 'databases')"
+                        [updating]="updatingMetrics"
+                        [datasourceMetrics]="metrics.databases">
+                    </jhi-metrics-datasource>
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

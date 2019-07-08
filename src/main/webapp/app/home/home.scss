@@ -1,4 +1,5 @@
 @import '../../content/scss/theme/themes';
+@import '../../content/scss/new-age';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 
@@ -198,4 +199,28 @@ Main page styles
     background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;
     background-size: contain;
   }
+}
+
+nb-layout-footer {
+  height: 120px;
+}
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.masthead {
+  margin-left: -32px;
+  margin-top: -62px;
+  margin-right: -34px;
+  max-width: 150%;
+}
+
+.hero .img-fluid {
+  //margin-top: -22px;
+  //padding-right: -15px;
+  max-width: 100%;
+  min-width: 100%;
+  width: 90%;
+  height: auto;
 }

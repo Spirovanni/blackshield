@@ -2,18 +2,18 @@
     <nb-card-header>
         <h2>
             <span id="user-management-page-heading" jhiTranslate="userManagement.home.title">Users</span>
-            <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['./new']">
+            <button class="btn btn-primary float-right btn-sm" [routerLink]="['./new']">
                 <fa-icon [icon]="'plus'"></fa-icon> <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
             </button>
         </h2>
     </nb-card-header>
     <jhi-alert></jhi-alert>
         <nb-card-body>
-            <div class="table-responsive" *ngIf="users">
-                <table class="table table-striped">
+<!--            <div class="table-responsive" *ngIf="users">-->
+                <ng2-smart-table *ngIf="users" class="user-group">
                     <thead>
                     <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-                        <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                        <th jhiSortBy="id" class="usrmanid"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                         <th jhiSortBy="login"><span jhiTranslate="userManagement.login">Login</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                         <th jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                         <th></th>
@@ -69,8 +69,8 @@
                         </td>
                     </tr>
                     </tbody>
-                </table>
-            </div>
+                </ng2-smart-table>
+<!--            </div>-->
         </nb-card-body>
 
             <div *ngIf="users">

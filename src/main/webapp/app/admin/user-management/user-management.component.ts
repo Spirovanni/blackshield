@@ -9,18 +9,10 @@ import { ITEMS_PER_PAGE } from 'app/shared';
 import { AccountService, UserService, User } from 'app/core';
 import { UserMgmtDeleteDialogComponent } from './user-management-delete-dialog.component';
 
-import { SmartTableData } from '../../shared/@core/data/smart-table';
-
 @Component({
   selector: 'jhi-user-mgmt',
   templateUrl: './user-management.component.html',
-  styles: [
-    `
-      nb-card {
-        transform: translate3d(0, 0, 0);
-      }
-    `
-  ]
+  styleUrls: ['./user-management.component.scss']
 })
 export class UserMgmtComponent implements OnInit, OnDestroy {
   currentAccount: any;

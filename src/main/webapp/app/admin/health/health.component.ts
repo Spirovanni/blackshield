@@ -6,6 +6,7 @@ import { JhiHealthModalComponent } from './health-modal.component';
 
 @Component({
   selector: 'jhi-health',
+  styleUrls: ['./health.component.scss'],
   templateUrl: './health.component.html'
 })
 export class JhiHealthCheckComponent implements OnInit {

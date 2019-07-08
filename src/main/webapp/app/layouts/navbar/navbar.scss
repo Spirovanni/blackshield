@@ -18,6 +18,10 @@ Navbar
   //  margin-right: 10px;
   //}
 
+  .nb-theme-cosmic nb-search button {
+    color: #00b0ff;
+  }
+
   .account-navigator {
     margin-right: 35px;
   }
@@ -86,6 +90,24 @@ Navbar
   @include nb-for-theme(corporate) {
     $menu-action-separator-color: #3f4550;
 
+    .navbar-brand {
+      &.logo {
+        padding: 50px 25px;
+        .logo-img {
+          height: 85px;
+          width: 190px;
+          display: inline-block;
+          vertical-align: middle;
+          background: url('../../../content/images/corporate-logo.png') no-repeat center center;
+          background-size: contain;
+
+          span {
+            font-weight: nb-theme(font-weight-normal);
+          }
+        }
+      }
+    }
+
     nb-action {
       @include nb-ltr(border-left-color, $menu-action-separator-color);
       @include nb-rtl(border-right-color, $menu-action-separator-color);
@@ -101,22 +123,77 @@ Navbar
     }
   }
 
+  @include nb-for-theme(default) {
+    $menu-action-separator-color: #3f4550;
+
+    .navbar-brand {
+      &.logo {
+        padding: 50px 25px;
+        .logo-img {
+          height: 85px;
+          width: 190px;
+          display: inline-block;
+          vertical-align: middle;
+          background: url('../../../content/images/light-logo.png') no-repeat center center;
+          background-size: contain;
+
+          span {
+            font-weight: nb-theme(font-weight-normal);
+          }
+        }
+      }
+    }
+  }
+
   @include nb-for-theme(cosmic) {
     $menu-action-separator-color: #2439ff;
 
-    jhi-navbar {
-      box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+    button {
+      color: #00b0ff;
     }
 
-    //nb-layout-header {
-    //  box-shadow: 0 0.5rem 1rem 0 #1a1f33;
-    //}
+    .navbar-brand {
+      &.logo {
+        padding: 50px 25px;
+        .logo-img {
+          height: 85px;
+          width: 190px;
+          display: inline-block;
+          vertical-align: middle;
+          background: url('../../../content/images/cosmos-logo.png') no-repeat center center;
+          background-size: contain;
 
-    background-color: #2d1e59;
-    box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+          span {
+            font-weight: nb-theme(font-weight-normal);
+          }
+        }
+      }
+    }
+
+    box-shadow: 0 0.5rem 3rem 0 #1a1f33;
+    height: 4.75rem;
+    padding: 1.25rem;
+    background-color: #4a0470;
+    //background-color: btn-hero-dark-gradient;
+
+    i .nb-search {
+      border-color: #00b0ff;
+    }
+
+    nb-layout .layout nb-layout-header nav {
+      color: #fff;
+      box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+      height: 4.75rem;
+      padding: 1.25rem;
+    }
+
+    i .nb-search {
+      border-color: #00b0ff;
+    }
 
     nb-user .account-navigator {
       color: white;
+      border-color: #00b0ff;
     }
 
     div .user-name {
@@ -266,23 +343,28 @@ Logo styles
   width: 50px;
 }
 
-.navbar-brand {
-  &.logo {
-    padding: 50px 25px;
-    .logo-img {
-      height: 85px;
-      width: 190px;
-      display: inline-block;
-      vertical-align: middle;
-      background: url('../../../content/images/logo-black-shield-white.png') no-repeat center center;
-      background-size: contain;
-
-      span {
-        font-weight: nb-theme(font-weight-normal);
-      }
-    }
-  }
+.nb-search {
+  border-color: #00b0ff;
+  color: #00b0ff;
 }
+
+//.navbar-brand {
+//  &.logo {
+//    padding: 50px 25px;
+//    .logo-img {
+//      height: 85px;
+//      width: 190px;
+//      display: inline-block;
+//      vertical-align: middle;
+//      background: url('../../../content/images/cosmos-logo.png') no-repeat center center;
+//      background-size: contain;
+//
+//      span {
+//        font-weight: nb-theme(font-weight-normal);
+//      }
+//    }
+//  }
+//}
 .navbar-version {
   font-size: 15px;
   color: #ccc;
