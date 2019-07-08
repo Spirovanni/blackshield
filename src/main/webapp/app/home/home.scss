@@ -209,13 +209,22 @@ nb-layout-footer {
 Main page styles
 ========================================================================== */
 
-nb-layout-column {
+.masthead {
   margin-left: -32px;
-  margin-top: -32px;
-  margin-right: -32px;
+  margin-top: -42px;
+  margin-right: -34px;
+  max-width: 150%;
 }
 
 .hero .img-fluid {
   max-width: 210%;
   height: auto;
+}
+
+h1 .mb-5 {
+  margin-left: -60px;
+}
+
+.header-content {
+  width: 1300px;
 }

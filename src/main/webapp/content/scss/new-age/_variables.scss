@@ -13,6 +13,8 @@ $gray: lighten($gray-base, 33.5%); // #555
 $gray-light: lighten($gray-base, 46.7%); // #777
 $gray-lighter: lighten($gray-base, 93.5%); // #eee
 
+$fun-var: linear-gradient(90deg, #c70d8e 0%, #7b4397 100%);
+
 $brand-twitter: #1da1f2;
 $brand-facebook: #3b5998;
 $brand-google-plus: #dd4b39;
