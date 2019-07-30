@@ -12,6 +12,7 @@
       "pages": {
         "main": "Pages",
         "dashboard": "Dashboard",
+        "points": "Points",
         "jhipster-needle-menu-add-entry": "JHipster will add additional pages here (do not translate!)"
       },
       "account": {
