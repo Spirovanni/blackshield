@@ -23,6 +23,7 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           loadChildren: './admin/admin.module#BlackshieldAdminModule'
         },
         { path: 'pages', loadChildren: './pages/pages.module#PagesModule' },
+        { path: 'armory', loadChildren: './armory/armory.module#BlackshieldArmoryModule' },
         {
           path: 'auth',
           component: NbAuthComponent,
